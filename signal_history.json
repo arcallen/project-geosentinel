@@ -1,11 +1,6 @@
 {
   "scans": [
     {
-      "time": "2026-03-16T17:36:27.272677+00:00",
-      "signals": 21,
-      "hotspots": 19
-    },
-    {
       "time": "2026-03-16T19:11:25.084323+00:00",
       "signals": 18,
       "hotspots": 15
@@ -149,6 +144,11 @@
       "time": "2026-03-18T10:29:54.879336+00:00",
       "signals": 19,
       "hotspots": 17
+    },
+    {
+      "time": "2026-03-18T11:28:05.311374+00:00",
+      "signals": 10,
+      "hotspots": 9
     }
   ],
   "baselines": {
@@ -234,7 +234,7 @@
     },
     "GB:travel": {
       "avg_weekly": 1.0,
-      "samples": 636
+      "samples": 637
     },
     "HT:cholera": {
       "avg_weekly": 1.0,
@@ -261,16 +261,16 @@
       "samples": 3
     },
     "FR:malaria": {
-      "avg_weekly": 1.1913580246913582,
-      "samples": 162
+      "avg_weekly": 1.1901840490797548,
+      "samples": 163
     },
     "DE:malaria": {
       "avg_weekly": 1.0,
-      "samples": 201
+      "samples": 202
     },
     "GB:malaria": {
-      "avg_weekly": 1.0060606060606054,
-      "samples": 495
+      "avg_weekly": 1.0060483870967736,
+      "samples": 496
     },
     "BR:covid": {
       "avg_weekly": 1.3333333333333333,
@@ -454,7 +454,7 @@
     },
     "AU:travel": {
       "avg_weekly": 1.0,
-      "samples": 351
+      "samples": 352
     },
     "MY:dengue": {
       "avg_weekly": 1.0,
@@ -581,8 +581,8 @@
       "samples": 2
     },
     "CL:dengue": {
-      "avg_weekly": 1,
-      "samples": 1
+      "avg_weekly": 1.0,
+      "samples": 2
     },
     "PH:malaria": {
       "avg_weekly": 1.0,
@@ -590,7 +590,7 @@
     },
     "VN:travel": {
       "avg_weekly": 1.0,
-      "samples": 6
+      "samples": 7
     },
     "VN:cholera": {
       "avg_weekly": 1.0,
@@ -846,7 +846,7 @@
     },
     "TH:dengue": {
       "avg_weekly": 1.0,
-      "samples": 6
+      "samples": 7
     },
     "VE:yellow fever": {
       "avg_weekly": 1.0,
@@ -882,7 +882,7 @@
     },
     "SG:dengue": {
       "avg_weekly": 1.0,
-      "samples": 41
+      "samples": 42
     },
     "BR:zika": {
       "avg_weekly": 1.0,
@@ -917,6 +917,10 @@
       "samples": 1
     },
     "ID:sick": {
+      "avg_weekly": 1,
+      "samples": 1
+    },
+    "CM:dengue": {
       "avg_weekly": 1,
       "samples": 1
     }
