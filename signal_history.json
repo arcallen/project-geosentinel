@@ -1,11 +1,6 @@
 {
   "scans": [
     {
-      "time": "2026-04-08T18:09:38.802962+00:00",
-      "signals": 16,
-      "hotspots": 15
-    },
-    {
       "time": "2026-04-08T19:47:34.386513+00:00",
       "signals": 14,
       "hotspots": 14
@@ -149,36 +144,41 @@
       "time": "2026-04-10T14:54:16.403404+00:00",
       "signals": 11,
       "hotspots": 11
+    },
+    {
+      "time": "2026-04-10T15:59:32.064765+00:00",
+      "signals": 11,
+      "hotspots": 11
     }
   ],
   "baselines": {
     "ET:marburg": {
-      "avg_weekly": 1.145547945205479,
-      "samples": 1168
+      "avg_weekly": 1.145423438836612,
+      "samples": 1169
     },
     "CD:ebola": {
       "avg_weekly": 1.0,
-      "samples": 1168
+      "samples": 1169
     },
     "BD:nipah": {
-      "avg_weekly": 1.1506849315068495,
-      "samples": 1168
+      "avg_weekly": 1.150556030795552,
+      "samples": 1169
     },
     "IN:nipah": {
-      "avg_weekly": 1.2046232876712333,
-      "samples": 1168
+      "avg_weekly": 1.2044482463644144,
+      "samples": 1169
     },
     "GN:polio": {
       "avg_weekly": 1.0,
-      "samples": 1168
+      "samples": 1169
     },
     "KH:h5n1": {
       "avg_weekly": 1.0,
-      "samples": 1168
+      "samples": 1169
     },
     "TH:anthrax": {
       "avg_weekly": 1.0,
-      "samples": 1168
+      "samples": 1169
     },
     "MX:h5n1": {
       "avg_weekly": 1.0,
@@ -186,11 +186,11 @@
     },
     "SN:rift valley fever": {
       "avg_weekly": 1.0,
-      "samples": 1168
+      "samples": 1169
     },
     "MA:measles": {
       "avg_weekly": 1.0,
-      "samples": 1168
+      "samples": 1169
     },
     "ZA:cholera": {
       "avg_weekly": 1.0,
@@ -214,7 +214,7 @@
     },
     "SA:unknown": {
       "avg_weekly": 1.0,
-      "samples": 1168
+      "samples": 1169
     },
     "UG:unknown": {
       "avg_weekly": 1.0,
@@ -1121,8 +1121,8 @@
       "samples": 1
     },
     "IT:unknown": {
-      "avg_weekly": 1,
-      "samples": 1
+      "avg_weekly": 1.0,
+      "samples": 2
     }
   }
 }
