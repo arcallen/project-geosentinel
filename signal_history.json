@@ -1,11 +1,6 @@
 {
   "scans": [
     {
-      "time": "2026-04-08T16:42:05.153027+00:00",
-      "signals": 17,
-      "hotspots": 17
-    },
-    {
       "time": "2026-04-08T18:09:38.802962+00:00",
       "signals": 16,
       "hotspots": 15
@@ -149,36 +144,41 @@
       "time": "2026-04-10T13:56:00.991753+00:00",
       "signals": 11,
       "hotspots": 11
+    },
+    {
+      "time": "2026-04-10T14:54:16.403404+00:00",
+      "signals": 11,
+      "hotspots": 11
     }
   ],
   "baselines": {
     "ET:marburg": {
-      "avg_weekly": 1.1456726649528701,
-      "samples": 1167
+      "avg_weekly": 1.145547945205479,
+      "samples": 1168
     },
     "CD:ebola": {
       "avg_weekly": 1.0,
-      "samples": 1167
+      "samples": 1168
     },
     "BD:nipah": {
-      "avg_weekly": 1.150814053127678,
-      "samples": 1167
+      "avg_weekly": 1.1506849315068495,
+      "samples": 1168
     },
     "IN:nipah": {
-      "avg_weekly": 1.2047986289631538,
-      "samples": 1167
+      "avg_weekly": 1.2046232876712333,
+      "samples": 1168
     },
     "GN:polio": {
       "avg_weekly": 1.0,
-      "samples": 1167
+      "samples": 1168
     },
     "KH:h5n1": {
       "avg_weekly": 1.0,
-      "samples": 1167
+      "samples": 1168
     },
     "TH:anthrax": {
       "avg_weekly": 1.0,
-      "samples": 1167
+      "samples": 1168
     },
     "MX:h5n1": {
       "avg_weekly": 1.0,
@@ -186,11 +186,11 @@
     },
     "SN:rift valley fever": {
       "avg_weekly": 1.0,
-      "samples": 1167
+      "samples": 1168
     },
     "MA:measles": {
       "avg_weekly": 1.0,
-      "samples": 1167
+      "samples": 1168
     },
     "ZA:cholera": {
       "avg_weekly": 1.0,
@@ -214,7 +214,7 @@
     },
     "SA:unknown": {
       "avg_weekly": 1.0,
-      "samples": 1167
+      "samples": 1168
     },
     "UG:unknown": {
       "avg_weekly": 1.0,
@@ -1117,6 +1117,10 @@
       "samples": 1
     },
     "CD:dengue": {
+      "avg_weekly": 1,
+      "samples": 1
+    },
+    "IT:unknown": {
       "avg_weekly": 1,
       "samples": 1
     }
