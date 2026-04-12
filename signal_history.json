@@ -1,11 +1,6 @@
 {
   "scans": [
     {
-      "time": "2026-04-11T05:12:41.455252+00:00",
-      "signals": 18,
-      "hotspots": 16
-    },
-    {
       "time": "2026-04-11T06:39:19.203904+00:00",
       "signals": 17,
       "hotspots": 15
@@ -149,36 +144,41 @@
       "time": "2026-04-12T15:07:01.964752+00:00",
       "signals": 18,
       "hotspots": 18
+    },
+    {
+      "time": "2026-04-12T16:02:07.931844+00:00",
+      "signals": 12,
+      "hotspots": 12
     }
   ],
   "baselines": {
     "ET:marburg": {
-      "avg_weekly": 1.140728476821192,
-      "samples": 1208
+      "avg_weekly": 1.140612076095947,
+      "samples": 1209
     },
     "CD:ebola": {
       "avg_weekly": 1.0,
-      "samples": 1208
+      "samples": 1209
     },
     "BD:nipah": {
-      "avg_weekly": 1.1456953642384107,
-      "samples": 1208
+      "avg_weekly": 1.1455748552522746,
+      "samples": 1209
     },
     "IN:nipah": {
-      "avg_weekly": 1.197847682119206,
-      "samples": 1208
+      "avg_weekly": 1.1976840363937145,
+      "samples": 1209
     },
     "GN:polio": {
       "avg_weekly": 1.0,
-      "samples": 1208
+      "samples": 1209
     },
     "KH:h5n1": {
       "avg_weekly": 1.0,
-      "samples": 1208
+      "samples": 1209
     },
     "TH:anthrax": {
       "avg_weekly": 1.0,
-      "samples": 1208
+      "samples": 1209
     },
     "MX:h5n1": {
       "avg_weekly": 1.0,
@@ -186,11 +186,11 @@
     },
     "SN:rift valley fever": {
       "avg_weekly": 1.0,
-      "samples": 1208
+      "samples": 1209
     },
     "MA:measles": {
       "avg_weekly": 1.0,
-      "samples": 1208
+      "samples": 1209
     },
     "ZA:cholera": {
       "avg_weekly": 1.0,
@@ -214,7 +214,7 @@
     },
     "SA:unknown": {
       "avg_weekly": 1.0,
-      "samples": 1208
+      "samples": 1209
     },
     "UG:unknown": {
       "avg_weekly": 1.0,
@@ -234,7 +234,7 @@
     },
     "GB:travel": {
       "avg_weekly": 1.0,
-      "samples": 1026
+      "samples": 1027
     },
     "HT:cholera": {
       "avg_weekly": 1.0,
@@ -1122,7 +1122,7 @@
     },
     "IT:unknown": {
       "avg_weekly": 1.0,
-      "samples": 41
+      "samples": 42
     },
     "CO:travel": {
       "avg_weekly": 1,
