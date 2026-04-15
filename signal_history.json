@@ -1,11 +1,6 @@
 {
   "scans": [
     {
-      "time": "2026-04-14T11:29:02.584664+00:00",
-      "signals": 16,
-      "hotspots": 16
-    },
-    {
       "time": "2026-04-14T11:55:03.163378+00:00",
       "signals": 11,
       "hotspots": 11
@@ -149,36 +144,41 @@
       "time": "2026-04-15T11:53:33.160545+00:00",
       "signals": 11,
       "hotspots": 11
+    },
+    {
+      "time": "2026-04-15T12:32:20.695506+00:00",
+      "signals": 11,
+      "hotspots": 11
     }
   ],
   "baselines": {
     "ET:marburg": {
-      "avg_weekly": 1.1329163408913205,
-      "samples": 1279
+      "avg_weekly": 1.1328124999999991,
+      "samples": 1280
     },
     "CD:ebola": {
       "avg_weekly": 1.0,
-      "samples": 1279
+      "samples": 1280
     },
     "BD:nipah": {
-      "avg_weekly": 1.1376075058639556,
-      "samples": 1279
+      "avg_weekly": 1.1374999999999995,
+      "samples": 1280
     },
     "IN:nipah": {
-      "avg_weekly": 1.1868647380766226,
-      "samples": 1279
+      "avg_weekly": 1.1867187500000003,
+      "samples": 1280
     },
     "GN:polio": {
       "avg_weekly": 1.0,
-      "samples": 1279
+      "samples": 1280
     },
     "KH:h5n1": {
       "avg_weekly": 1.0,
-      "samples": 1279
+      "samples": 1280
     },
     "TH:anthrax": {
       "avg_weekly": 1.0,
-      "samples": 1279
+      "samples": 1280
     },
     "MX:h5n1": {
       "avg_weekly": 1.0,
@@ -186,11 +186,11 @@
     },
     "SN:rift valley fever": {
       "avg_weekly": 1.0,
-      "samples": 1279
+      "samples": 1280
     },
     "MA:measles": {
       "avg_weekly": 1.0,
-      "samples": 1279
+      "samples": 1280
     },
     "ZA:cholera": {
       "avg_weekly": 1.0,
@@ -214,7 +214,7 @@
     },
     "SA:unknown": {
       "avg_weekly": 1.0,
-      "samples": 1279
+      "samples": 1280
     },
     "UG:unknown": {
       "avg_weekly": 1.0,
@@ -1122,7 +1122,7 @@
     },
     "IT:unknown": {
       "avg_weekly": 1.0,
-      "samples": 112
+      "samples": 113
     },
     "CO:travel": {
       "avg_weekly": 1,
