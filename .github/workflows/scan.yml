@@ -31,8 +31,18 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "GeoSentinel Bot"
           git add signals.json signal_history.json
-          git diff --cached --quiet || git commit -m "🛰️ Scan $(date -u +%Y-%m-%dT%H:%M:%SZ) — $(python3 -c 'import json; d=json.load(open("signals.json")); print(d["stats"]["total_signals"], "signals,", d["stats"]["countries_affected"], "countries")')"
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "🛰️ Scan $(date -u +%Y-%m-%dT%H:%M:%SZ) — $(python3 -c 'import json; d=json.load(open("signals.json")); print(d["stats"]["total_signals"], "signals,", d["stats"]["countries_affected"], "countries")')"
+          # Rebase on top of any concurrent commit before pushing — handles
+          # races with manual dispatch, overlapping scans, or rebased history.
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            echo "push attempt $i failed, retrying..."
+            sleep 5
+          done
 
   deploy:
     needs: scan
