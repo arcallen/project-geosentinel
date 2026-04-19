@@ -91,7 +91,7 @@
   .sig-badges{margin-left:auto;display:flex;gap:3px}
   .badge{font-size:.42rem;padding:2px 6px;border-radius:10px;font-weight:600}
   .badge.who{color:var(--un-blue);background:var(--un-light)}
-  .badge.twitter{color:#1da1f2;background:#e8f5fd}
+  .badge.mastodon{color:#6364ff;background:#eaeaff}
   .badge.news{color:#7c3aed;background:#ede9fe}
   .badge.reddit{color:#ff4500;background:#fff0e6}
   .badge.trends{color:var(--low);background:var(--low-bg)}
@@ -179,8 +179,8 @@
     <span class="tbar-label">Source</span>
     <button class="tbtn on" data-f="source" data-v="all">All</button>
     <button class="tbtn" data-f="source" data-v="who">🏥 WHO</button>
-    <button class="tbtn" data-f="source" data-v="twitter">𝕏 Twitter</button>
     <button class="tbtn" data-f="source" data-v="news">📰 News</button>
+    <button class="tbtn" data-f="source" data-v="mastodon">🐘 Mastodon</button>
     <button class="tbtn" data-f="source" data-v="reddit">💬 Reddit</button>
     <button class="tbtn" data-f="source" data-v="trends">📈 Trends</button>
   </div>
@@ -226,7 +226,7 @@
 
 <div class="ftr">
   <div class="ftr-l">
-    <span>🌐 Sources: WHO · Twitter/X · News · Reddit · Google Trends</span>
+    <span>🌐 Sources: WHO · News (GDELT) · Mastodon · Reddit · Google Trends</span>
     <span>|</span><span id="fSig">—</span>
     <span>|</span><span id="fCo">—</span>
     <span>|</span><span id="fTrav">—</span>
@@ -241,7 +241,7 @@ let filterSource='all',filterSev='all',filterTime='30d';
 
 const SEV={critical:'#d32f2f',high:'#e65100',moderate:'#f9a825',low:'#2e7d32'};
 const CAT_C={'vector-borne':'#e65100',waterborne:'#0288d1',respiratory:'#7c3aed',viral:'#d32f2f',hemorrhagic:'#b71c1c',bacterial:'#f9a825','vaccine-preventable':'#2e7d32',parasitic:'#ff6f00',unknown:'#90a4ae'};
-const SRC_I={who:'🏥',twitter:'𝕏',news:'📰',reddit:'💬',trends:'📈'};
+const SRC_I={who:'🏥',mastodon:'🐘',news:'📰',reddit:'💬',trends:'📈'};
 
 function sc(s){return s>=8?'c':s>=6?'h':s>=4?'m':'lo'}
 function sl(s){return s>=8?'critical':s>=6?'high':s>=4?'moderate':'low'}

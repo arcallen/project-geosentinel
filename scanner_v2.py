@@ -1,22 +1,20 @@
 #!/usr/bin/env python3
 """GeoSentinel 2.0 Scanner v2 — Multi-source disease surveillance with anomaly detection.
-Sources: WHO, Twitter/X, Reddit, Google Trends, News, ProMED
+Sources: WHO, News (GDELT), Reddit (direct), Mastodon, Google Trends — all keyless
 Features: deduplication, traveler detection, anomaly scoring, city-level geocoding"""
 
 import json
 import os
 import re
-import subprocess
 import sys
 import urllib.request
 import urllib.parse
 import hashlib
-import gzip
 from datetime import datetime, timezone, timedelta
 from collections import defaultdict
 
 DIR = os.path.dirname(os.path.abspath(__file__))
-SIGNALS_FILE = os.path.join(DIR, "terminal", "signals.json")
+SIGNALS_FILE = os.path.join(DIR, "signals.json")
 HISTORY_FILE = os.path.join(DIR, "signal_history.json")
 
 # ═══════════════════════════════════════════
@@ -280,7 +278,7 @@ def is_traveler_signal(text):
 
 def compute_confidence(signal):
     """Multi-factor confidence scoring."""
-    base = {"who": 0.95, "news": 0.70, "twitter": 0.45, "reddit": 0.40, "trends": 0.50}
+    base = {"who": 0.95, "news": 0.70, "mastodon": 0.45, "reddit": 0.40, "trends": 0.50}
     conf = base.get(signal.get("source", ""), 0.5)
     if signal.get("is_traveler"): conf += 0.1
     if signal.get("type") == "official_alert": conf += 0.1
@@ -290,60 +288,45 @@ def compute_confidence(signal):
 
 # ═══ Search functions ═══
 
-def get_brave_key():
+def fetch_gdelt(query, max_records=25):
+    """Keyless global news via GDELT 2.0 doc API. Returns dicts compatible with process_news."""
+    params = urllib.parse.urlencode({
+        "query": query,
+        "mode": "ArtList",
+        "format": "json",
+        "maxrecords": str(max_records),
+        "sort": "DateDesc",
+        "timespan": "7d",
+    })
+    url = "https://api.gdeltproject.org/api/v2/doc/doc?" + params
+    req = urllib.request.Request(url, headers={"User-Agent": "geosentinel/2.0", "Accept": "application/json"})
     try:
-        # Try openclaw.json first (standard location)
-        for p in ["~/.openclaw/openclaw.json", "~/.openclaw/gateway.json"]:
-            cfg_path = os.path.expanduser(p)
-            if os.path.exists(cfg_path):
-                with open(cfg_path) as f:
-                    cfg = json.load(f)
-                # Check tools.web.search.apiKey (standard OpenClaw config)
-                key = cfg.get("tools", {}).get("web", {}).get("search", {}).get("apiKey", "")
-                if key:
-                    return key
-                # Fallback to legacy locations
-                key = cfg.get("braveApiKey", cfg.get("webSearch", {}).get("braveApiKey", ""))
-                if key:
-                    return key
-        return os.environ.get("BRAVE_API_KEY", "")
-    except:
-        return os.environ.get("BRAVE_API_KEY", "")
-
-def search_web(query, count=8):
-    api_key = get_brave_key()
-    if not api_key:
-        return []
-    params = urllib.parse.urlencode({"q": query, "count": str(count), "freshness": "pw"})
-    url = "https://api.search.brave.com/res/v1/web/search?" + params
-    headers = {"Accept": "application/json", "Accept-Encoding": "gzip", "X-Subscription-Token": api_key}
-    req = urllib.request.Request(url, headers=headers)
-    try:
-        with urllib.request.urlopen(req, timeout=15) as r:
+        with urllib.request.urlopen(req, timeout=20) as r:
             raw = r.read()
-            try:
-                data = json.loads(gzip.decompress(raw))
-            except:
-                data = json.loads(raw)
-        return [{"title": i.get("title",""), "url": i.get("url",""), 
-                 "description": i.get("description",""), "published": i.get("age","")}
-                for i in data.get("web",{}).get("results",[])]
+        try:
+            data = json.loads(raw)
+        except json.JSONDecodeError:
+            return []  # GDELT occasionally returns non-JSON for malformed queries
+        out = []
+        for a in data.get("articles", []):
+            seen = a.get("seendate", "")
+            published = ""
+            if len(seen) >= 15:
+                published = f"{seen[0:4]}-{seen[4:6]}-{seen[6:8]}T{seen[9:11]}:{seen[11:13]}:{seen[13:15]}Z"
+            # GDELT's sourcecountry is the English country name — fold it into
+            # the searchable text so the geocoder catches it when the article
+            # title doesn't name a known city/country.
+            country = a.get("sourcecountry", "")
+            out.append({
+                "title": a.get("title", ""),
+                "description": country,
+                "url": a.get("url", ""),
+                "published": published,
+            })
+        return out
     except Exception as e:
-        print(f"  [!] Search error: {e}", file=sys.stderr)
+        print(f"  [!] GDELT error: {e}", file=sys.stderr)
         return []
-
-def search_bird(query, count=20):
-    try:
-        result = subprocess.run(
-            ["bird", "search", query, "--count", str(count), "--json"],
-            capture_output=True, text=True, timeout=30
-        )
-        if result.returncode == 0:
-            data = json.loads(result.stdout)
-            return data if isinstance(data, list) else []
-    except Exception as e:
-        print(f"  [!] Bird error: {e}", file=sys.stderr)
-    return []
 
 def fetch_who():
     url = "https://www.who.int/api/hubs/diseaseoutbreaknews?$orderby=PublicationDate%20desc&$top=30"
@@ -354,6 +337,79 @@ def fetch_who():
     except Exception as e:
         print(f"  [!] WHO error: {e}", file=sys.stderr)
         return []
+
+REDDIT_UA = "geosentinel/2.0 (+https://github.com/acuestamd/geosentinel)"
+
+def fetch_reddit_direct(query, limit=20):
+    """Hit Reddit's public JSON search API directly (no Brave dep)."""
+    params = urllib.parse.urlencode({"q": query, "limit": str(limit), "sort": "new", "t": "month"})
+    url = "https://www.reddit.com/search.json?" + params
+    req = urllib.request.Request(url, headers={"User-Agent": REDDIT_UA, "Accept": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            data = json.loads(r.read())
+        out = []
+        for child in data.get("data", {}).get("children", []):
+            d = child.get("data", {})
+            permalink = d.get("permalink", "")
+            out.append({
+                "title": d.get("title", ""),
+                "description": d.get("selftext", "")[:500],
+                "url": "https://www.reddit.com" + permalink if permalink else d.get("url", ""),
+                "published": datetime.fromtimestamp(d.get("created_utc", 0), tz=timezone.utc).isoformat() if d.get("created_utc") else "",
+            })
+        return out
+    except Exception as e:
+        print(f"  [!] Reddit error: {e}", file=sys.stderr)
+        return []
+
+MASTODON_INSTANCES = ["mastodon.social", "mstdn.social", "mas.to"]
+
+def fetch_mastodon(tag, limit=40):
+    """Fetch Mastodon hashtag timeline (public, no auth) across fallback instances."""
+    params = urllib.parse.urlencode({"limit": str(limit)})
+    safe_tag = urllib.parse.quote(tag.lstrip("#"))
+    for host in MASTODON_INSTANCES:
+        url = f"https://{host}/api/v1/timelines/tag/{safe_tag}?" + params
+        req = urllib.request.Request(url, headers={"User-Agent": REDDIT_UA, "Accept": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=15) as r:
+                return json.loads(r.read())
+        except Exception as e:
+            print(f"  [!] Mastodon {host}/{safe_tag} error: {e}", file=sys.stderr)
+            continue
+    return []
+
+_HTML_TAG = re.compile(r"<[^>]+>")
+
+def process_mastodon(statuses):
+    signals = []
+    for s in statuses:
+        text = _HTML_TAG.sub(" ", s.get("content", "")).strip()
+        if not text:
+            continue
+        loc = geocode(text)
+        diseases = detect_diseases(text)
+        if loc and (diseases or is_traveler_signal(text)):
+            d = diseases[0] if diseases else {"name":"unknown illness","cat":"unknown","sev":4,"emoji":"🌡️"}
+            traveler = is_traveler_signal(text)
+            signals.append({
+                "id": make_id(text),
+                "source": "mastodon",
+                "type": "traveler_report" if traveler else "symptom_report",
+                "disease": d["name"],
+                "category": d["cat"],
+                "emoji": d["emoji"],
+                "location": loc,
+                "severity": min(10, d["sev"] + (1 if traveler else 0)),
+                "confidence": 0.55 if traveler else 0.45,
+                "summary": text[:280],
+                "url": s.get("url", ""),
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "published": s.get("created_at", ""),
+                "is_traveler": traveler,
+            })
+    return signals
 
 def fetch_google_trends():
     """Get Google Trends data for disease + travel keywords."""
@@ -462,35 +518,6 @@ def process_news(results, query=""):
                 "url": r.get("url", ""),
                 "timestamp": datetime.now(timezone.utc).isoformat(),
                 "published": r.get("published", ""),
-                "is_traveler": traveler,
-            })
-    return signals
-
-def process_tweets(tweets):
-    signals = []
-    for t in tweets:
-        text = t.get("text", t.get("full_text", ""))
-        user = t.get("user", {}).get("screen_name", "")
-        loc = geocode(text)
-        diseases = detect_diseases(text)
-        if loc and diseases:
-            d = diseases[0]
-            traveler = is_traveler_signal(text)
-            sev = d["sev"] + (1 if traveler else 0)
-            signals.append({
-                "id": make_id(text),
-                "source": "twitter",
-                "type": "traveler_report" if traveler else "symptom_report",
-                "disease": d["name"],
-                "category": d["cat"],
-                "emoji": d["emoji"],
-                "location": loc,
-                "severity": min(10, sev),
-                "confidence": 0.55 if traveler else 0.45,
-                "summary": text[:280],
-                "url": "https://x.com/%s/status/%s" % (user, t.get("id_str", t.get("id", ""))) if user else "",
-                "timestamp": datetime.now(timezone.utc).isoformat(),
-                "published": t.get("created_at", ""),
                 "is_traveler": traveler,
             })
     return signals
@@ -659,73 +686,59 @@ def run_scan():
     print(f"   → {len(who)} items")
     all_signals.extend(process_who(who))
     
-    # 2. News (Brave)
+    # 2. News (GDELT — keyless global news API; ~1 req per 8s for unauth)
     news_queries = [
-        "disease outbreak 2026 travel",
-        "dengue outbreak cases 2026",
-        "cholera outbreak 2026",
-        "malaria outbreak surge 2026",
-        "avian flu H5N1 outbreak 2026",
-        "measles outbreak cases 2026",
-        "mpox cases outbreak 2026",
-        "travelers sick returning illness",
-        "travel health warning disease",
-        "ebola marburg outbreak Africa 2026",
-        "typhoid outbreak travel",
-        "meningitis outbreak 2026",
-        "nipah virus outbreak",
-        "yellow fever outbreak 2026",
-        "lassa fever outbreak",
-        "polio cases outbreak",
+        '"dengue outbreak"',
+        '"cholera outbreak"',
+        '("H5N1" OR "avian flu") outbreak',
+        '("ebola" OR "marburg") outbreak',
+        '"mpox" outbreak',
+        '("nipah" OR "lassa fever") outbreak',
+        '"yellow fever" outbreak',
+        '"measles outbreak"',
     ]
-    print(f"\n🔍 [2/5] News search ({len(news_queries)} queries)...")
+    print(f"\n🔍 [2/5] News search ({len(news_queries)} queries via GDELT)...")
     for i, q in enumerate(news_queries):
-        results = search_web(q, count=5)
+        results = fetch_gdelt(q, max_records=25)
         sigs = process_news(results, q)
         if sigs:
-            print(f"   [{i+1}/{len(news_queries)}] '{q}' → {len(sigs)} signals")
+            print(f"   [{i+1}/{len(news_queries)}] {q} → {len(sigs)} signals")
         all_signals.extend(sigs)
-        time.sleep(1.1)  # rate limit
+        time.sleep(8.0)  # GDELT 429s aggressively under ~5s spacing
     
-    # 3. Twitter
-    twitter_queries = [
-        "sick after traveling fever",
-        "got malaria travel Africa",
-        "dengue travel sick hospital",
-        "food poisoning travel diarrhea",
-        "outbreak warning travel alert",
-        "came back sick from trip",
-        "travel illness hospitalized",
-        "cholera outbreak travel warning",
-        "tourist sick hospital tropical",
-        "traveler quarantine infection",
-    ]
-    print(f"\n🐦 [3/5] Twitter/X ({len(twitter_queries)} queries)...")
-    for q in twitter_queries:
-        tweets = search_bird(q, count=15)
-        sigs = process_tweets(tweets)
-        if sigs:
-            print(f"   '{q}' → {len(sigs)} signals")
-        all_signals.extend(sigs)
-    
-    # 4. Reddit (via web search)
+    # 3. Reddit (direct JSON API — no Brave dependency)
     reddit_queries = [
-        "site:reddit.com travel sick illness trip",
-        "site:reddit.com got dengue traveling",
-        "site:reddit.com malaria travel experience",
-        "site:reddit.com food poisoning travel country",
-        "site:reddit.com travel health warning outbreak",
-        "site:reddit.com sick after vacation tropical",
+        "travel sick illness trip",
+        "got dengue traveling",
+        "malaria travel experience",
+        "food poisoning travel country",
+        "travel health warning outbreak",
+        "sick after vacation tropical",
     ]
-    print(f"\n💬 [4/5] Reddit ({len(reddit_queries)} queries)...")
+    print(f"\n💬 [3/5] Reddit ({len(reddit_queries)} queries)...")
     for q in reddit_queries:
-        results = search_web(q, count=5)
+        results = fetch_reddit_direct(q, limit=20)
         sigs = process_reddit(results)
         if sigs:
             print(f"   '{q}' → {len(sigs)} signals")
         all_signals.extend(sigs)
-        time.sleep(1.1)
-    
+        time.sleep(2.0)  # Reddit asks ~30 req/min max for unauth
+
+    # 4. Mastodon (replaces Twitter/X — public hashtag timeline, no auth)
+    mastodon_tags = [
+        "dengue", "malaria", "cholera", "ebola", "mpox", "measles",
+        "outbreak", "h5n1", "avianflu", "nipah", "marburg", "yellowfever",
+        "publichealth", "travelhealth",
+    ]
+    print(f"\n🐘 [4/5] Mastodon ({len(mastodon_tags)} hashtags)...")
+    for tag in mastodon_tags:
+        statuses = fetch_mastodon(tag, limit=40)
+        sigs = process_mastodon(statuses)
+        if sigs:
+            print(f"   #{tag} → {len(sigs)} signals")
+        all_signals.extend(sigs)
+        time.sleep(1.0)
+
     # 5. Google Trends
     print("\n📈 [5/5] Google Trends...")
     trend_signals = fetch_google_trends()
