@@ -1,11 +1,6 @@
 {
   "scans": [
     {
-      "time": "2026-04-25T22:19:01.390518+00:00",
-      "signals": 110,
-      "hotspots": 40
-    },
-    {
       "time": "2026-04-25T22:51:07.952143+00:00",
       "signals": 112,
       "hotspots": 40
@@ -149,36 +144,41 @@
       "time": "2026-04-26T18:25:36.044814+00:00",
       "signals": 112,
       "hotspots": 41
+    },
+    {
+      "time": "2026-04-26T18:52:39.294855+00:00",
+      "signals": 107,
+      "hotspots": 40
     }
   ],
   "baselines": {
     "ET:marburg": {
-      "avg_weekly": 1.1032179720704276,
-      "samples": 1647
+      "avg_weekly": 1.1031553398058218,
+      "samples": 1648
     },
     "CD:ebola": {
-      "avg_weekly": 1.1299332119004244,
-      "samples": 1647
+      "avg_weekly": 1.1304611650485432,
+      "samples": 1648
     },
     "BD:nipah": {
-      "avg_weekly": 1.2367941712203996,
-      "samples": 1647
+      "avg_weekly": 1.2372572815533969,
+      "samples": 1648
     },
     "IN:nipah": {
-      "avg_weekly": 1.275045537340617,
-      "samples": 1647
+      "avg_weekly": 1.2754854368932016,
+      "samples": 1648
     },
     "GN:polio": {
       "avg_weekly": 1.0,
-      "samples": 1647
+      "samples": 1648
     },
     "KH:h5n1": {
-      "avg_weekly": 1.1293260473588351,
-      "samples": 1647
+      "avg_weekly": 1.1298543689320397,
+      "samples": 1648
     },
     "TH:anthrax": {
       "avg_weekly": 1.0,
-      "samples": 1647
+      "samples": 1648
     },
     "MX:h5n1": {
       "avg_weekly": 1.0,
@@ -186,11 +186,11 @@
     },
     "SN:rift valley fever": {
       "avg_weekly": 1.0,
-      "samples": 1647
+      "samples": 1648
     },
     "MA:measles": {
       "avg_weekly": 1.0,
-      "samples": 1647
+      "samples": 1648
     },
     "ZA:cholera": {
       "avg_weekly": 1.0,
@@ -214,7 +214,7 @@
     },
     "SA:unknown": {
       "avg_weekly": 1.0,
-      "samples": 1647
+      "samples": 1648
     },
     "UG:unknown": {
       "avg_weekly": 1.0,
@@ -225,8 +225,8 @@
       "samples": 3
     },
     "BR:yellow fever": {
-      "avg_weekly": 1.0024449877750619,
-      "samples": 409
+      "avg_weekly": 1.0024390243902446,
+      "samples": 410
     },
     "PH:dengue": {
       "avg_weekly": 1.0241545893719803,
@@ -234,15 +234,15 @@
     },
     "GB:travel": {
       "avg_weekly": 1.0,
-      "samples": 1334
+      "samples": 1335
     },
     "HT:cholera": {
       "avg_weekly": 1.0,
-      "samples": 216
+      "samples": 217
     },
     "BR:cholera": {
-      "avg_weekly": 1.0026737967914452,
-      "samples": 374
+      "avg_weekly": 1.002666666666668,
+      "samples": 375
     },
     "DO:cholera": {
       "avg_weekly": 1.0,
@@ -269,8 +269,8 @@
       "samples": 458
     },
     "GB:malaria": {
-      "avg_weekly": 1.146300914380713,
-      "samples": 1203
+      "avg_weekly": 1.1470099667774067,
+      "samples": 1204
     },
     "BR:covid": {
       "avg_weekly": 1.2857142857142858,
@@ -278,7 +278,7 @@
     },
     "IN:typhoid": {
       "avg_weekly": 1.0,
-      "samples": 325
+      "samples": 326
     },
     "GB:hepatitis a": {
       "avg_weekly": 1.0,
@@ -330,7 +330,7 @@
     },
     "CD:cholera": {
       "avg_weekly": 1.0,
-      "samples": 383
+      "samples": 384
     },
     "IN:bird flu": {
       "avg_weekly": 1.0,
@@ -338,15 +338,15 @@
     },
     "BR:nipah": {
       "avg_weekly": 1.0,
-      "samples": 288
+      "samples": 289
     },
     "MY:nipah": {
       "avg_weekly": 1.0,
-      "samples": 417
+      "samples": 418
     },
     "SD:cholera": {
       "avg_weekly": 1.0,
-      "samples": 360
+      "samples": 361
     },
     "IN:cholera": {
       "avg_weekly": 1.0,
@@ -366,7 +366,7 @@
     },
     "PE:malaria": {
       "avg_weekly": 1.0,
-      "samples": 469
+      "samples": 470
     },
     "ZM:cholera": {
       "avg_weekly": 1.0,
@@ -374,7 +374,7 @@
     },
     "IN:h5n1": {
       "avg_weekly": 1.0,
-      "samples": 255
+      "samples": 256
     },
     "PK:polio": {
       "avg_weekly": 1.0,
@@ -382,7 +382,7 @@
     },
     "BR:measles": {
       "avg_weekly": 1.0,
-      "samples": 212
+      "samples": 213
     },
     "KE:yellow fever": {
       "avg_weekly": 1.0,
@@ -390,7 +390,7 @@
     },
     "CF:measles": {
       "avg_weekly": 1.0,
-      "samples": 332
+      "samples": 333
     },
     "CN:dengue": {
       "avg_weekly": 1.0,
@@ -401,8 +401,8 @@
       "samples": 28
     },
     "BR:dengue": {
-      "avg_weekly": 1.1836283185840712,
-      "samples": 452
+      "avg_weekly": 1.1832229580573956,
+      "samples": 453
     },
     "IN:travel": {
       "avg_weekly": 1.0,
@@ -422,7 +422,7 @@
     },
     "GB:chikungunya": {
       "avg_weekly": 1.0,
-      "samples": 293
+      "samples": 294
     },
     "TZ:yellow fever": {
       "avg_weekly": 1.0,
@@ -461,12 +461,12 @@
       "samples": 17
     },
     "BR:malaria": {
-      "avg_weekly": 1.0548523206751061,
-      "samples": 474
+      "avg_weekly": 1.0547368421052639,
+      "samples": 475
     },
     "IN:malaria": {
-      "avg_weekly": 1.0092592592592584,
-      "samples": 108
+      "avg_weekly": 1.0091743119266048,
+      "samples": 109
     },
     "IT:malaria": {
       "avg_weekly": 1.0,
@@ -477,8 +477,8 @@
       "samples": 112
     },
     "MX:dengue": {
-      "avg_weekly": 1.012437810945273,
-      "samples": 402
+      "avg_weekly": 1.0124069478908182,
+      "samples": 403
     },
     "BR:typhoid": {
       "avg_weekly": 1.0,
@@ -494,7 +494,7 @@
     },
     "CD:mpox": {
       "avg_weekly": 1.0,
-      "samples": 346
+      "samples": 347
     },
     "IN:food poisoning": {
       "avg_weekly": 1.0,
@@ -522,11 +522,11 @@
     },
     "AU:malaria": {
       "avg_weekly": 1.0,
-      "samples": 699
+      "samples": 700
     },
     "KR:dengue": {
       "avg_weekly": 1.0,
-      "samples": 455
+      "samples": 456
     },
     "KE:mpox": {
       "avg_weekly": 1,
@@ -558,7 +558,7 @@
     },
     "CO:yellow fever": {
       "avg_weekly": 1.0,
-      "samples": 268
+      "samples": 269
     },
     "AE:unknown illness": {
       "avg_weekly": 1.0,
@@ -570,7 +570,7 @@
     },
     "SG:nipah": {
       "avg_weekly": 1.0,
-      "samples": 390
+      "samples": 391
     },
     "AU:food poisoning": {
       "avg_weekly": 1.0,
@@ -582,7 +582,7 @@
     },
     "CL:dengue": {
       "avg_weekly": 1.0,
-      "samples": 216
+      "samples": 217
     },
     "PH:malaria": {
       "avg_weekly": 1.0,
@@ -677,8 +677,8 @@
       "samples": 4
     },
     "JP:malaria": {
-      "avg_weekly": 1.0128755364806858,
-      "samples": 233
+      "avg_weekly": 1.0128205128205119,
+      "samples": 234
     },
     "JP:travel": {
       "avg_weekly": 1.0,
@@ -782,7 +782,7 @@
     },
     "BR:marburg": {
       "avg_weekly": 1.0,
-      "samples": 255
+      "samples": 256
     },
     "CF:polio": {
       "avg_weekly": 1.0,
@@ -810,7 +810,7 @@
     },
     "ES:mpox": {
       "avg_weekly": 1.0,
-      "samples": 298
+      "samples": 299
     },
     "BR:norovirus": {
       "avg_weekly": 1.0,
@@ -822,7 +822,7 @@
     },
     "CF:marburg": {
       "avg_weekly": 1.0,
-      "samples": 289
+      "samples": 290
     },
     "MY:rabies": {
       "avg_weekly": 1.0,
@@ -854,7 +854,7 @@
     },
     "CF:meningitis": {
       "avg_weekly": 1.0,
-      "samples": 255
+      "samples": 256
     },
     "DO:tuberculosis": {
       "avg_weekly": 1.0,
@@ -881,8 +881,8 @@
       "samples": 31
     },
     "SG:dengue": {
-      "avg_weekly": 1.0777096114519427,
-      "samples": 489
+      "avg_weekly": 1.0775510204081633,
+      "samples": 490
     },
     "BR:zika": {
       "avg_weekly": 1.0,
@@ -890,7 +890,7 @@
     },
     "NG:ebola": {
       "avg_weekly": 1.0,
-      "samples": 224
+      "samples": 225
     },
     "VN:typhoid": {
       "avg_weekly": 1.0,
@@ -901,8 +901,8 @@
       "samples": 1
     },
     "IN:dengue": {
-      "avg_weekly": 1.073469387755102,
-      "samples": 245
+      "avg_weekly": 1.0731707317073171,
+      "samples": 246
     },
     "HT:dengue": {
       "avg_weekly": 1,
@@ -958,7 +958,7 @@
     },
     "PE:yellow fever": {
       "avg_weekly": 1.0,
-      "samples": 304
+      "samples": 305
     },
     "CD:meningitis": {
       "avg_weekly": 1.0,
@@ -970,7 +970,7 @@
     },
     "PE:dengue": {
       "avg_weekly": 1.0,
-      "samples": 265
+      "samples": 266
     },
     "PK:mpox": {
       "avg_weekly": 1.0,
@@ -1014,7 +1014,7 @@
     },
     "BR:monkeypox": {
       "avg_weekly": 1.0,
-      "samples": 222
+      "samples": 223
     },
     "SG:monkeypox": {
       "avg_weekly": 1,
@@ -1050,7 +1050,7 @@
     },
     "BR:unknown illness": {
       "avg_weekly": 1.0,
-      "samples": 261
+      "samples": 262
     },
     "IN:covid": {
       "avg_weekly": 1.0,
@@ -1070,7 +1070,7 @@
     },
     "PE:cholera": {
       "avg_weekly": 1.0,
-      "samples": 246
+      "samples": 247
     },
     "CM:polio": {
       "avg_weekly": 1.0,
@@ -1090,7 +1090,7 @@
     },
     "CF:malaria": {
       "avg_weekly": 1.0,
-      "samples": 248
+      "samples": 249
     },
     "SG:mpox": {
       "avg_weekly": 1.0,
@@ -1098,7 +1098,7 @@
     },
     "KE:malaria": {
       "avg_weekly": 1.0,
-      "samples": 224
+      "samples": 225
     },
     "JP:typhoid": {
       "avg_weekly": 1.0,
@@ -1122,7 +1122,7 @@
     },
     "IT:unknown": {
       "avg_weekly": 1.0,
-      "samples": 480
+      "samples": 481
     },
     "CO:travel": {
       "avg_weekly": 1,
@@ -1146,15 +1146,15 @@
     },
     "PE:ebola": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "TH:nipah": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "KE:cholera": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "ID:ebola": {
       "avg_weekly": 1.0,
@@ -1162,19 +1162,19 @@
     },
     "CF:ebola": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "LR:ebola": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "PE:marburg": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "GB:marburg": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "BR:tuberculosis": {
       "avg_weekly": 1.0,
@@ -1182,107 +1182,107 @@
     },
     "BR:rabies": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "GB:nipah": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "VN:nipah": {
       "avg_weekly": 1.0,
-      "samples": 209
+      "samples": 210
     },
     "CF:nipah": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "BR:polio": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "CL:cholera": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "GB:h5n1": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "CF:yellow fever": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "GB:mers": {
       "avg_weekly": 1.0,
-      "samples": 209
+      "samples": 210
     },
     "GB:cholera": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "CL:h5n1": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "FR:h5n1": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "ML:h5n1": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "GR:h5n1": {
       "avg_weekly": 1.0,
-      "samples": 212
+      "samples": 213
     },
     "CN:h5n1": {
       "avg_weekly": 1.0,
-      "samples": 208
+      "samples": 209
     },
     "PE:avian flu": {
       "avg_weekly": 1.0,
-      "samples": 207
+      "samples": 208
     },
     "CF:sars": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "PK:hiv": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "VE:malaria": {
       "avg_weekly": 1.0,
-      "samples": 209
+      "samples": 210
     },
     "EG:malaria": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "CF:hiv": {
       "avg_weekly": 1.0,
-      "samples": 152
+      "samples": 153
     },
     "HN:dengue": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "EG:dengue": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "JP:measles": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "NG:measles": {
       "avg_weekly": 1.0,
-      "samples": 210
+      "samples": 211
     },
     "GB:monkeypox": {
       "avg_weekly": 1.0,
-      "samples": 210
+      "samples": 211
     },
     "ML:covid": {
       "avg_weekly": 1.0,
@@ -1290,19 +1290,19 @@
     },
     "UG:fever": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "VN:fever": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "CO:fever": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "BR:fever": {
       "avg_weekly": 1.0,
-      "samples": 214
+      "samples": 215
     },
     "DE:marburg": {
       "avg_weekly": 1.0,
@@ -1330,11 +1330,11 @@
     },
     "AU:mpox": {
       "avg_weekly": 1.0,
-      "samples": 67
+      "samples": 68
     },
     "BD:measles": {
-      "avg_weekly": 2.111801242236025,
-      "samples": 161
+      "avg_weekly": 2.111111111111111,
+      "samples": 162
     },
     "GB:hiv": {
       "avg_weekly": 1.0,
@@ -1342,7 +1342,7 @@
     },
     "FR:chikungunya": {
       "avg_weekly": 1.0,
-      "samples": 191
+      "samples": 192
     },
     "ZM:sick": {
       "avg_weekly": 1,
@@ -1350,11 +1350,11 @@
     },
     "BR:avian flu": {
       "avg_weekly": 1.0,
-      "samples": 183
+      "samples": 184
     },
     "GB:measles": {
-      "avg_weekly": 1.0459770114942537,
-      "samples": 174
+      "avg_weekly": 1.0457142857142865,
+      "samples": 175
     },
     "NG:covid": {
       "avg_weekly": 1.0,
@@ -1366,19 +1366,19 @@
     },
     "CL:marburg": {
       "avg_weekly": 1.0,
-      "samples": 140
+      "samples": 141
     },
     "CF:mers": {
       "avg_weekly": 1.0,
       "samples": 47
     },
     "ZM:hiv": {
-      "avg_weekly": 1.3706896551724141,
-      "samples": 116
+      "avg_weekly": 1.3760683760683763,
+      "samples": 117
     },
     "GN:lassa": {
       "avg_weekly": 1.0,
-      "samples": 117
+      "samples": 118
     },
     "CF:avian flu": {
       "avg_weekly": 1.0,
@@ -1393,12 +1393,12 @@
       "samples": 6
     },
     "IN:measles": {
-      "avg_weekly": 1.2545454545454546,
-      "samples": 110
+      "avg_weekly": 1.2522522522522523,
+      "samples": 111
     },
     "UG:measles": {
       "avg_weekly": 1.0,
-      "samples": 77
+      "samples": 78
     },
     "SL:dengue": {
       "avg_weekly": 1,
@@ -1406,7 +1406,7 @@
     },
     "VN:bird flu": {
       "avg_weekly": 1.0,
-      "samples": 63
+      "samples": 64
     },
     "LK:sick": {
       "avg_weekly": 1,
@@ -1418,7 +1418,7 @@
     },
     "IT:marburg": {
       "avg_weekly": 1.0,
-      "samples": 30
+      "samples": 31
     }
   }
 }
