@@ -1,7 +1,7 @@
 {
   "version": "2.0",
-  "lastScan": "2026-05-17T15:55:17.822792+00:00",
-  "scanDuration": 116.7,
+  "lastScan": "2026-05-17T16:29:18.186269+00:00",
+  "scanDuration": 190.6,
   "signals": [
     {
       "id": "a2af3cd9f269",
@@ -204,6 +204,31 @@
       "anomaly_factor": null
     },
     {
+      "id": "dc1870d3cd8e",
+      "source": "news",
+      "type": "outbreak_report",
+      "disease": "lassa fever",
+      "category": "hemorrhagic",
+      "emoji": "\ud83e\ude78",
+      "location": {
+        "lat": 9.08,
+        "lng": 7.49,
+        "name": "Nigeria",
+        "country": "Nigeria",
+        "iso": "NG",
+        "region": "West Africa"
+      },
+      "severity": 10,
+      "confidence": 0.8,
+      "summary": "Nigeria : Lassa Fever Deaths Rise to 191 As Late Treatment Worsens Outbreak - NCDC Nigeria",
+      "url": "https://allafrica.com/stories/202605150083.html",
+      "timestamp": "2026-05-17T16:27:47.978571+00:00",
+      "published": "2026-05-15T08:45:00Z",
+      "is_traveler": false,
+      "anomaly": false,
+      "anomaly_factor": null
+    },
+    {
       "id": "19b32d5afff1",
       "source": "who",
       "type": "official_alert",
@@ -229,6 +254,31 @@
       "anomaly_factor": null
     },
     {
+      "id": "ea281371252b",
+      "source": "mastodon",
+      "type": "traveler_report",
+      "disease": "ebola",
+      "category": "hemorrhagic",
+      "emoji": "\ud83e\ude78",
+      "location": {
+        "lat": 1.37,
+        "lng": 32.29,
+        "name": "Uganda",
+        "country": "Uganda",
+        "iso": "UG",
+        "region": "East Africa"
+      },
+      "severity": 10,
+      "confidence": 0.65,
+      "summary": "WHO has declared the Ebola outbreak in Congo and Uganda a public health emergency of international concern following over 300 suspected cases and 88 deaths   https://  english.mathrubhumi.com/multim  edia/videos/who-declares-ebola-outbreak-congo-uganda-international-health-emerge",
+      "url": "https://mastodon.social/@Mathrubhumi_English/116590739118804178",
+      "timestamp": "2026-05-17T16:28:56.789588+00:00",
+      "published": "2026-05-17T15:58:14.859Z",
+      "is_traveler": true,
+      "anomaly": false,
+      "anomaly_factor": null
+    },
+    {
       "id": "99e4b3ee5854",
       "source": "mastodon",
       "type": "traveler_report",
@@ -247,33 +297,8 @@
       "confidence": 0.65,
       "summary": "At least 80 deaths reported as Congo grapples with new Ebola outbreak At least 80 deaths have been reported in Congo's new Ebola disease outbreak in the eastern Ituri province, authorities said, as health workers raced Saturday to intensify screening and contact tracing to contai",
       "url": "https://mastodon.hongkongers.net/@cbctop_mirror/116584455732683159",
-      "timestamp": "2026-05-17T15:55:02.799403+00:00",
+      "timestamp": "2026-05-17T16:29:01.794967+00:00",
       "published": "2026-05-16T13:20:17.000Z",
-      "is_traveler": true,
-      "anomaly": false,
-      "anomaly_factor": null
-    },
-    {
-      "id": "e569e86f2038",
-      "source": "mastodon",
-      "type": "traveler_report",
-      "disease": "ebola",
-      "category": "hemorrhagic",
-      "emoji": "\ud83e\ude78",
-      "location": {
-        "lat": 1.37,
-        "lng": 32.29,
-        "name": "Uganda",
-        "country": "Uganda",
-        "iso": "UG",
-        "region": "East Africa"
-      },
-      "severity": 10,
-      "confidence": 0.65,
-      "summary": "WHO Director-General Tedros Adhanom Ghebreyesus declared the Ebola disease outbreak in Congo and Uganda a public health emergency of international concern after 300+ suspected cases and 88 deaths  \n\n   https://  lemmy.world/post/46966958",
-      "url": "https://lemmy.world/post/46966958",
-      "timestamp": "2026-05-17T15:55:13.433731+00:00",
-      "published": "2026-05-17T05:38:12.210Z",
       "is_traveler": true,
       "anomaly": false,
       "anomaly_factor": null
@@ -322,7 +347,7 @@
       "confidence": 0.6,
       "summary": "'The risk Ebola poses to the whole world remains tiny. Even in the 2014-16 outbreak, there were only three cases in the UK and all were healthcare workers who had volunteered to help.  '\"But it does reflect that the situation is complex enough to require international coordinatio",
       "url": "https://hachyderm.io/@rationaldoge/116590574309273906",
-      "timestamp": "2026-05-17T15:54:57.959497+00:00",
+      "timestamp": "2026-05-17T16:28:56.790223+00:00",
       "published": "2026-05-17T15:16:20.000Z",
       "is_traveler": true,
       "anomaly": false,
@@ -347,7 +372,7 @@
       "confidence": 0.55,
       "summary": "Ministry of Health denies fake news and clarifies:  # Brazil   has no confirmed cases of  # Nipah  ,   https://www.  gov.br/saude/pt-br/assuntos/no  ticias/2026/fevereiro/ministerio-da-saude-desmente-fake-news-e-esclarece-brasil-nao-tem-caso-de-nipah-confirmado     The  # WHO   s",
       "url": "https://mstdn.science/@GMIK69/116041576575177575",
-      "timestamp": "2026-05-17T15:55:08.646529+00:00",
+      "timestamp": "2026-05-17T16:29:06.666837+00:00",
       "published": "2026-02-09T16:18:59.000Z",
       "is_traveler": true,
       "anomaly": false,
@@ -372,7 +397,7 @@
       "confidence": 0.55,
       "summary": "\"Two cases of the deadly Nipah virus in India have prompted authorities in Thailand and Malaysia to step up airport screening...\" \"Nipah is a rare viral infection... but it is often very dangerous, with a case fatality rate of 40% to 75%\" \"...while it can also spread from person ",
       "url": "https://toad.social/@minorusaba/115977030291221258",
-      "timestamp": "2026-05-17T15:55:08.648223+00:00",
+      "timestamp": "2026-05-17T16:29:06.668538+00:00",
       "published": "2026-01-29T06:44:01.000Z",
       "is_traveler": true,
       "anomaly": false,
@@ -397,7 +422,7 @@
       "confidence": 0.55,
       "summary": "Nipah virus fears trigger airport checks across Asia    https://www.  reuters.com/business/healthcar  e-pharmaceuticals/india-reports-two-nipah-virus-infections-thai-malaysia-step-up-screening-2026-01-28/     # virus     # Nipah     # news",
       "url": "https://mastodon.social/@appassionato/115973710373604407",
-      "timestamp": "2026-05-17T15:55:08.648799+00:00",
+      "timestamp": "2026-05-17T16:29:06.669114+00:00",
       "published": "2026-01-28T16:39:43.390Z",
       "is_traveler": true,
       "anomaly": false,
@@ -422,7 +447,7 @@
       "confidence": 0.6,
       "summary": "Africa: Expert - Africa Faces Worst Cholera Outbreak in 25 Years: [Independent (Kampala)] Nairobi -- Africa is facing the worst cholera outbreak in 25 years, Africa Centers for Disease Control and Prevention Director General Jean Kaseya said in an online briefing.   http://  news",
       "url": "https://journa.host/@africa/115572091224364181",
-      "timestamp": "2026-05-17T15:54:55.864448+00:00",
+      "timestamp": "2026-05-17T16:28:55.177607+00:00",
       "published": "2025-11-18T18:22:41.000Z",
       "is_traveler": true,
       "anomaly": false,
@@ -447,34 +472,9 @@
       "confidence": 0.6,
       "summary": "Statement from the Intl  # Hantavirus   Society &amp; research clinical community regarding the  current Andes virus ( # ANDV  ) outbreak investigation \"ANDV transmission dynamics differ fundamentally from highly transmissible respiratory viruses such as  # measles   virus, influ",
       "url": "https://universeodon.com/@GezaH/116550019483949084",
-      "timestamp": "2026-05-17T15:55:01.231527+00:00",
+      "timestamp": "2026-05-17T16:29:00.198505+00:00",
       "published": "2026-05-10T11:22:42.000Z",
       "is_traveler": true,
-      "anomaly": false,
-      "anomaly_factor": null
-    },
-    {
-      "id": "b9c926c6c32d",
-      "source": "news",
-      "type": "outbreak_report",
-      "disease": "measles",
-      "category": "vaccine-preventable",
-      "emoji": "\ud83d\udc89",
-      "location": {
-        "lat": 23.63,
-        "lng": -102.55,
-        "name": "Mexico",
-        "country": "Mexico",
-        "iso": "MX",
-        "region": "Latin America"
-      },
-      "severity": 7,
-      "confidence": 0.75,
-      "summary": "A measles outbreak crossed into Mexico from Texas . A larger tragedy followed - LocalNews8 . com United States",
-      "url": "https://localnews8.com/news/national-world/cnn-world/2026/05/17/a-measles-outbreak-crossed-into-mexico-from-texas-a-larger-tragedy-followed/",
-      "timestamp": "2026-05-17T15:54:31.067890+00:00",
-      "published": "2026-05-17T12:15:00Z",
-      "is_traveler": false,
       "anomaly": false,
       "anomaly_factor": null
     },
@@ -522,7 +522,7 @@
       "confidence": 0.5,
       "summary": "RE:   https://  mastodon.social/@thejapantimes  /116587545272588189    Black people dying by the dozens from a highly contagious disease with a high death rate. The media: Meh...  Three White people dying of less lethal and less contagious disease on a cruise quickly quarantined.",
       "url": "https://mstdn.social/@aSweetGentleman/116590051313186100",
-      "timestamp": "2026-05-17T15:54:57.961406+00:00",
+      "timestamp": "2026-05-17T16:28:56.792116+00:00",
       "published": "2026-05-17T13:03:19.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -547,9 +547,61 @@
       "confidence": 0.55,
       "summary": "Hantavirus Cruise Ship Scare: Serious, But Not COVID 2.0 \u2013 And Hopefully Handled Smarter This&nbsp;Time  \n\n  The MV Hondius and similar vessels highlight the rare risks of rodent-borne viruses on expeditions (Image generated by Grok Imagine for illustrative purposes). This genera",
       "url": "https://thisclaimer.com/2026/05/09/hantavirus-cruise-outbreak-not-covid-2026/",
-      "timestamp": "2026-05-17T15:55:04.938924+00:00",
+      "timestamp": "2026-05-17T16:29:03.434321+00:00",
       "published": "2026-05-09T12:53:19.000Z",
       "is_traveler": true,
+      "anomaly": false,
+      "anomaly_factor": null
+    },
+    {
+      "id": "7537ffda9514",
+      "source": "trends",
+      "type": "search_spike",
+      "disease": "malaria",
+      "category": "vector-borne",
+      "emoji": "\ud83e\udd9f",
+      "location": {
+        "lat": -14.24,
+        "lng": -51.93,
+        "name": "Brazil",
+        "country": "Brazil",
+        "iso": "BR",
+        "region": "Latin America"
+      },
+      "severity": 8,
+      "confidence": 0.6,
+      "summary": "Google Trends: 'malaria travel' search interest at 100/100 in Brazil",
+      "url": "https://trends.google.com/trends/explore?q=malaria%20travel",
+      "timestamp": "2026-05-17T16:29:17.178226+00:00",
+      "published": "last 7 days",
+      "is_traveler": true,
+      "trend_score": 100,
+      "anomaly": false,
+      "anomaly_factor": null
+    },
+    {
+      "id": "2009210f2a79",
+      "source": "trends",
+      "type": "search_spike",
+      "disease": "travel",
+      "category": "unknown",
+      "emoji": "\ud83d\udcc8",
+      "location": {
+        "lat": 23.63,
+        "lng": -102.55,
+        "name": "Mexico",
+        "country": "Mexico",
+        "iso": "MX",
+        "region": "Latin America"
+      },
+      "severity": 8,
+      "confidence": 0.6,
+      "summary": "Google Trends: 'travel illness' search interest at 100/100 in Mexico",
+      "url": "https://trends.google.com/trends/explore?q=travel%20illness",
+      "timestamp": "2026-05-17T16:29:18.183024+00:00",
+      "published": "last 7 days",
+      "is_traveler": true,
+      "trend_score": 100,
       "anomaly": false,
       "anomaly_factor": null
     },
@@ -572,7 +624,7 @@
       "confidence": 0.45,
       "summary": "# hantavirus    # ebola    # WHO    # measles    # rfkjr    # genocide    # Defundingfema    # defundingscience     # iran    # watercrisis    # massstarvationingaza    # venezuela    # cuba    # datacenters    # Gasturbines    # inflation    # concentrationcamps    # jimcrow2   ",
       "url": "https://techhub.social/@mscheffel/116589550791927963",
-      "timestamp": "2026-05-17T15:55:01.229582+00:00",
+      "timestamp": "2026-05-17T16:29:00.196603+00:00",
       "published": "2026-05-17T10:56:02.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -597,7 +649,7 @@
       "confidence": 0.5,
       "summary": "3 cases of  # Nipah   \u2013 2 in  # India   &amp; 1 in  # Bangladesh   \u2013 caused concern about a {potential} wider outbreak. Over 230  # contacts   have been followed, but no further cases have been identified. The two outbreaks are not related.  # WHO   DG,   https://www.  who.int/ne",
       "url": "https://mstdn.science/@GMIK69/116053012323999875",
-      "timestamp": "2026-05-17T15:55:08.646325+00:00",
+      "timestamp": "2026-05-17T16:29:06.666653+00:00",
       "published": "2026-02-11T16:47:15.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -622,7 +674,7 @@
       "confidence": 0.5,
       "summary": "# Nipah   virus:  # Singapore   to conduct temperature  # screening   at  # airport   for flights from affected areas   https://www.  channelnewsasia.com/singapore/  cda-monitoring-nipah-virus-infection-outbreak-india-5890681",
       "url": "https://mstdn.science/@GMIK69/115971967745139258",
-      "timestamp": "2026-05-17T15:55:08.649150+00:00",
+      "timestamp": "2026-05-17T16:29:06.669461+00:00",
       "published": "2026-01-28T09:16:32.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -647,7 +699,7 @@
       "confidence": 0.45,
       "summary": "Viele \ud83d\ude97 \ud83d\ude9a \ud83d\ude97 treffen sich gerade auf der A39: Salzgitter -&gt; Braunschweig, zwischen 1.2 km hinter AS Baddeckenstedt und AS Westerlinde und blockieren die  # Autobahn  .  Die Stadt  # Marburg   setzt mit dem \u201eMarburger Modell\u201c auf eine innovative  # Verkehrswende  : Wer sein  # A",
       "url": "https://mastodon.social/@StauBot/116585844791173314",
-      "timestamp": "2026-05-17T15:55:10.099163+00:00",
+      "timestamp": "2026-05-17T16:29:09.002220+00:00",
       "published": "2026-05-16T19:13:33.345Z",
       "is_traveler": false,
       "anomaly": false,
@@ -672,7 +724,7 @@
       "confidence": 0.45,
       "summary": "Tattoo Circus 2026 in K\u00f6ln  Seit \u00fcber 20 Jahren gibt es europaweit Tattoo Circus Events: Tattoo Artists, politische Vortr\u00e4ge und Veranstaltungen, sowie viel, viel Musik bis tief in die Nacht.  In K\u00f6ln vom 14.-16. Mai: es wird inhaltlich gehen um das rechte Medienportal NIUS, um A",
       "url": "https://freiburg.social/@breakdownthewalls/116554348353507042",
-      "timestamp": "2026-05-17T15:55:10.100048+00:00",
+      "timestamp": "2026-05-17T16:29:09.003110+00:00",
       "published": "2026-05-11T05:43:35.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -697,7 +749,7 @@
       "confidence": 0.45,
       "summary": "... \n \n #fotografie   #photography   #landschap   #landscape   #landschapsfotografie   #landscapephotography   #landschaft   #landschaftsfotografie   #marburg   #duitsland   #deutschland   #germany",
       "url": "https://gram.social/p/Michel/955734213437777351",
-      "timestamp": "2026-05-17T15:55:10.101185+00:00",
+      "timestamp": "2026-05-17T16:29:09.004229+00:00",
       "published": "2026-05-01T07:46:33.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -722,33 +774,33 @@
       "confidence": 0.45,
       "summary": "Vor 100 Jahren: Im hessischen Marburg stirbt der deutsche Jurist und Hochschullehrer Gustav Adolf Arndt, in Santiago de Chile der chilenische Schriftsteller Federico Gana.   https://  de.wikipedia.org/wiki/Marburg       https://  de.wikipedia.org/wiki/G._Adolf  _Arndt     https:/",
       "url": "https://mastodon.social/@heute_vor/116448074175190791",
-      "timestamp": "2026-05-17T15:55:10.102740+00:00",
+      "timestamp": "2026-05-17T16:29:09.005758+00:00",
       "published": "2026-04-22T11:16:40.580Z",
       "is_traveler": false,
       "anomaly": false,
       "anomaly_factor": null
     },
     {
-      "id": "6b2097a245d4",
+      "id": "37622315ac95",
       "source": "news",
       "type": "outbreak_report",
-      "disease": "measles",
-      "category": "vaccine-preventable",
-      "emoji": "\ud83d\udc89",
+      "disease": "dengue",
+      "category": "vector-borne",
+      "emoji": "\ud83e\udd9f",
       "location": {
-        "lat": 23.68,
-        "lng": 90.36,
-        "name": "Bangladesh",
-        "country": "Bangladesh",
-        "iso": "BD",
-        "region": "South Asia"
+        "lat": 12.88,
+        "lng": 121.77,
+        "name": "Philippines",
+        "country": "Philippines",
+        "iso": "PH",
+        "region": "SE Asia"
       },
       "severity": 6,
       "confidence": 0.7,
-      "summary": "Time to declare a public health emergency over measles ?  Bangladesh",
-      "url": "http://www.dhakacourier.com.bd/news/Featured_1/Time-to-declare-a-public-health-emergency-over-measles/10202",
-      "timestamp": "2026-05-17T15:54:31.068596+00:00",
-      "published": "2026-05-15T16:30:00Z",
+      "summary": "Health group urges govt to procure dengue vaccines Philippines",
+      "url": "https://www.manilatimes.net/2026/05/14/news/health-group-urges-govt-to-procure-dengue-vaccines/2343690",
+      "timestamp": "2026-05-17T16:26:17.317930+00:00",
+      "published": "2026-05-14T10:30:00Z",
       "is_traveler": false,
       "anomaly": false,
       "anomaly_factor": null
@@ -772,7 +824,7 @@
       "confidence": 0.45,
       "summary": "#CDC  \"pauses\" testing for  #rabies , other serious  #InfectiousDisease \n\n #Disease  tracking is also \"temporarily\" halted for  #mpox , other common  #viruses , eg  #EpsteinBarr  &amp;  #VaricellaZoster  (the virus that causes  #Chickenpox  &amp;  #HerpesZoster ).\n\n #Herpes   #He",
       "url": "https://fed.brid.gy/r/https://bsky.app/profile/did:plc:h6gbaoquhivhn5kiy26ni2qm/post/3mipo7fmjoc27",
-      "timestamp": "2026-05-17T15:54:59.578973+00:00",
+      "timestamp": "2026-05-17T16:28:58.483888+00:00",
       "published": "2026-04-05T02:09:36.485Z",
       "is_traveler": false,
       "anomaly": false,
@@ -797,7 +849,7 @@
       "confidence": 0.45,
       "summary": "Ykk\u00f6saamussa keskustellaan parhaillaan t\u00e4st\u00e4  # Nipah  -viruksesta otsakkeella \"Onko t\u00e4m\u00e4 seuraava  # korona  ?\"   Olli Vapalahti onneksi sanoi, ett\u00e4 tuskin on.   Mutta kyseess\u00e4 on hyvin vakava ja kuollettava tauti, jota Intiassa on - ilmeisimmin taas - ryp\u00e4ksi\u00e4.   # zoonoosi    ",
       "url": "https://masto.ai/@HannaEsmeralda_/116039308206658829",
-      "timestamp": "2026-05-17T15:55:08.646713+00:00",
+      "timestamp": "2026-05-17T16:29:06.667042+00:00",
       "published": "2026-02-09T06:42:06.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -822,7 +874,7 @@
       "confidence": 0.45,
       "summary": "# Nipah   virus  # infection   -  # Bangladesh   ( # WHO   D.O.N., Feb. 7 '26),   https://  etidiohnew.blogspot.com/2026/0  2/nipah-virus-infection-bangladesh-who.html",
       "url": "https://mstdn.science/@GMIK69/116028547831378937",
-      "timestamp": "2026-05-17T15:55:08.646775+00:00",
+      "timestamp": "2026-05-17T16:29:06.667105+00:00",
       "published": "2026-02-07T09:05:36.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -847,7 +899,7 @@
       "confidence": 0.45,
       "summary": "\ud83d\udea8 Virus Nipah: b\u1ec7nh truy\u1ec1n nhi\u1ec5m nguy hi\u1ec3m, t\u1ef7 l\u1ec7 t\u1eed vong cao, nh\u01b0ng nguy c\u01a1 b\u00f9ng ph\u00e1t l\u1edbn \u1edf Vi\u1ec7t Nam r\u1ea5t th\u1ea5p. C\u00e1c chuy\u00ean gia kh\u1eb3ng \u0111\u1ecbnh ng\u01b0\u1eddi d\u00e2n kh\u00f4ng c\u1ea7n hoang mang, ch\u1ec9 c\u1ea7n duy tr\u00ec v\u1ec7 sinh, tr\u00e1nh ti\u1ebfp x\u00fac v\u1edbi \u0111\u1ed9ng v\u1eadt hoang d\u00e3 v\u00e0 tu\u00e2n th\u1ee7 h\u01b0\u1edbng d\u1eabn y t\u1ebf. \ud83d\udee1\ufe0f\ud83e\uddfc   # Nipah    # V",
       "url": "https://mastodon.maobui.com/@vietnamnet_bot/115975309723797648",
-      "timestamp": "2026-05-17T15:55:08.648436+00:00",
+      "timestamp": "2026-05-17T16:29:06.668740+00:00",
       "published": "2026-01-28T23:26:27.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -872,7 +924,7 @@
       "confidence": 0.45,
       "summary": "@ kcarruthers    oh jeez o_0 that&#39;s fairly indicative \ud83d\ude2c  # nipah    # virus",
       "url": "https://mastodon.social/@Irisherself/115974533746205753",
-      "timestamp": "2026-05-17T15:55:08.648579+00:00",
+      "timestamp": "2026-05-17T16:29:06.668882+00:00",
       "published": "2026-01-28T20:09:07.063Z",
       "is_traveler": false,
       "anomaly": false,
@@ -897,7 +949,7 @@
       "confidence": 0.5,
       "summary": "Before the current relapse, 78% of the population was in need of humanitarian assistance, while 53% knew critical hunger levels (IPC 3+).  # Floods   affected ca. 890,000 people, and  # SouthSudan   was going through its worst  # cholera   outbreak on record.     # War    # Civil",
       "url": "https://newsie.social/@mathieugotteland/116143930675499488",
-      "timestamp": "2026-05-17T15:54:55.861684+00:00",
+      "timestamp": "2026-05-17T16:28:55.174822+00:00",
       "published": "2026-02-27T18:08:59.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -922,7 +974,7 @@
       "confidence": 0.5,
       "summary": "\ud83d\udea8New article out now in Current Tropical Medicine Reports!  \ud83e\udda7\ud83e\udd9fEpizootic surveillance in non-human primates is key to preventing yellow fever outbreaks in South America. \ud83d\udccdFocus on Brazil &amp; Colombia (2024\u20132025) \ud83d\udd17Read:   https://  doi.org/10.1007/s40475-025-003  49-z    # Yellow",
       "url": "https://mastodon.social/@drajrodriguezm/114698708772587150",
-      "timestamp": "2026-05-17T15:55:11.958158+00:00",
+      "timestamp": "2026-05-17T16:29:10.636327+00:00",
       "published": "2025-06-17T12:30:02.912Z",
       "is_traveler": false,
       "anomaly": false,
@@ -947,7 +999,7 @@
       "confidence": 0.5,
       "summary": "From  # PAHO  : alert about the effects of  # vaccine   hessitancy (and the dreader antivaxxers) in Latin America in view of the outbreaks of  # measles   and yellow fever:    # health    # latinamerica    # OPS    # yellowfever    # outbreak       https://www.  reuters.com/busin",
       "url": "https://mastodon.social/@jmcastagnetto/114398980374702196",
-      "timestamp": "2026-05-17T15:55:11.958472+00:00",
+      "timestamp": "2026-05-17T16:29:10.636629+00:00",
       "published": "2025-04-25T14:05:10.511Z",
       "is_traveler": false,
       "anomaly": false,
@@ -972,7 +1024,7 @@
       "confidence": 0.55,
       "summary": "This is wild! (please excuse pun) \n\nLarge, randomized study showing that Wolbachia\u2011based Aedes mosquito population suppression alone can significantly reduce dengue infections in a real\u2011world, dense urban setting!\n\n #dengue   #IDSky   #singapore   @nejm.org@bsky.brid.gy   #MedSky",
       "url": "https://fed.brid.gy/r/https://bsky.app/profile/did:plc:dmy36y7p2lwmdc54fjis4uez/post/3mi3eqaiku222",
-      "timestamp": "2026-05-17T15:54:52.471489+00:00",
+      "timestamp": "2026-05-17T16:28:51.572214+00:00",
       "published": "2026-03-28T00:26:49.351Z",
       "is_traveler": true,
       "anomaly": false,
@@ -997,7 +1049,7 @@
       "confidence": 0.55,
       "summary": "Dengue fever cases in the US have jumped by over 350% this year, a significant increase compared to previous periods. The CDC is now advising travelers to be cautious.   # DengueFever  ,  # CDCTravel  ,  # MosquitoBorne  ,  # PublicHealth  ,  # TravelWarning     https://  newslet",
       "url": "https://mastodon.social/@newsletterTF/116590721020694215",
-      "timestamp": "2026-05-17T15:55:13.431650+00:00",
+      "timestamp": "2026-05-17T16:29:12.386339+00:00",
       "published": "2026-05-17T15:53:38.703Z",
       "is_traveler": true,
       "anomaly": false,
@@ -1022,7 +1074,7 @@
       "confidence": 0.45,
       "summary": "Der  # Cholera  -Impfstoff wird nach Engp\u00e4ssen wieder eingesetzt, bleibt jedoch knapp und zwingt in vielen Regionen weiterhin zu Ein-Dosis-Impfungen.    https://  bukopharma.de/pharmabrief/phar  ma-brief-2-2026-biotechnologie-hormontherapie-und-pandemieabkommen/cholera-wieder-meh",
       "url": "https://nrw.social/@buko_pharmakampagne/116589332549585327",
-      "timestamp": "2026-05-17T15:54:55.860848+00:00",
+      "timestamp": "2026-05-17T16:28:55.174014+00:00",
       "published": "2026-05-17T10:00:32.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1047,7 +1099,7 @@
       "confidence": 0.45,
       "summary": "The Pipes of Pipe Street: the thread about the Eleventh Day of Christmas  \n\n   This thread was originally written and published in January 2020.    This part in the Edinburgh and Leith themed Twelve Days of Christmas thread is preceded by  a post about Lord Russell Place and the ",
       "url": "https://threadinburgh.scot/2023/01/04/the-thread-about-the-eleventh-day-of-christmas-the-pipes-of-pipe-street/",
-      "timestamp": "2026-05-17T15:54:55.862948+00:00",
+      "timestamp": "2026-05-17T16:28:55.176110+00:00",
       "published": "2023-01-04T22:57:03.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1072,7 +1124,7 @@
       "confidence": 0.45,
       "summary": "# RDCongo   : face aux besoins urgents des populations d\u00e9plac\u00e9es par les combats  dans le territoire de Fizi au Sud-Kivu, MSF a lanc\u00e9 deux op\u00e9rations  d&#39;urgence contre le  # paludisme   et le  # chol\u00e9ra  .    https://www.  msf.fr/actualites/rdc-msf-inte  rvient-aupres-des-pop",
       "url": "https://mastodon.social/@GREUBELINUX/115687827922119741",
-      "timestamp": "2026-05-17T15:54:55.863988+00:00",
+      "timestamp": "2026-05-17T16:28:55.177162+00:00",
       "published": "2025-12-09T04:56:03.368Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1097,7 +1149,7 @@
       "confidence": 0.45,
       "summary": "(8/8) ... abolition de la repr\u00e9sentation  # politique   des catholiques et des juifs  # religion    # racisme   (cf 1919 1924 1925 1982). - Bielorussie :  # MarcChagall  , de famille juive hassidique, peint La Prise (cf 1937)  # Art   - France 4e R\u00e9publique : Lille -&gt; naissanc",
       "url": "https://mastodon.social/@cobrate/115499050376513114",
-      "timestamp": "2026-05-17T15:54:55.864787+00:00",
+      "timestamp": "2026-05-17T16:28:55.177973+00:00",
       "published": "2025-11-05T20:47:26.625Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1122,7 +1174,7 @@
       "confidence": 0.45,
       "summary": "\ud83d\udcda Dominikanische Republik verst\u00e4rkt Gesundheits\u00fcberwachung wegen Cholera-Ausbruchs in Haiti.  \u2022 \ud83c\udde9\ud83c\uddf4 Keine Cholera-F\u00e4lle in der DR registriert. \u2022 \u26a0\ufe0f \u00dcberwachungsma\u00dfnahmen in Grenzgebieten aktiv. \u2022 \ud83c\udfe5 Gesundheitsminister Atallah versichert Vorsorge.    https://www.  domreptotal.com/d",
       "url": "https://mastodon.hexix.de/@feed2mastodon/115454913497406409",
-      "timestamp": "2026-05-17T15:54:55.865407+00:00",
+      "timestamp": "2026-05-17T16:28:55.178585+00:00",
       "published": "2025-10-29T01:42:51.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1147,7 +1199,7 @@
       "confidence": 0.45,
       "summary": "A bird flu vaccine for humans is being trialled \u2013 here\u2019s how it&nbsp;works  # BirdFlu    # H5N1    # Vaccine    # mRNA    # Health    # Science    # Pandemic    # PublicHealth    # Vaccines    # Healthcare    # FluVaccine    # Technology    # WHO    # Virus    # CancerResearch   ",
       "url": "https://mastodon.world/@The14/116580020164366718",
-      "timestamp": "2026-05-17T15:55:04.937282+00:00",
+      "timestamp": "2026-05-17T16:29:03.432684+00:00",
       "published": "2026-05-15T18:32:16.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1172,7 +1224,7 @@
       "confidence": 0.45,
       "summary": "Migratory  # bird   and marine  # mammal    # surveillance   fails to find  # evidence   for an HPAI  # H5N1   2.3.4.4b incursion into  # Australia   in 2025,   https://  etidiohnew.blogspot.com/2026/0  5/migratory-bird-and-marine-mammal.html",
       "url": "https://mstdn.science/@GMIK69/116543537690388982",
-      "timestamp": "2026-05-17T15:55:04.939125+00:00",
+      "timestamp": "2026-05-17T16:29:03.434523+00:00",
       "published": "2026-05-09T07:54:18.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1197,7 +1249,7 @@
       "confidence": 0.45,
       "summary": "Variable  # transmission   efficiency of  # mammalian   origin  # HPAI   D1.1  # H5N1   strains in  # ferrets  ,   https://  etidiohnew.blogspot.com/2026/0  5/variable-transmission-efficiency-of.html",
       "url": "https://mstdn.science/@GMIK69/116543526061910114",
-      "timestamp": "2026-05-17T15:55:04.939205+00:00",
+      "timestamp": "2026-05-17T16:29:03.434601+00:00",
       "published": "2026-05-09T07:51:20.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1222,7 +1274,7 @@
       "confidence": 0.45,
       "summary": "CC/Airborne aware friends: here are a few areas the hantavirus news has reminded me about where I can up my game a bit.Or maybe they are just a few things I can do to make myself feel like I'm doing something. That's valid, right?   1) Stock up on N95s. Always a good idea. 2) Ord",
       "url": "https://zeroes.ca/@ExpatRepeat/116538441128071706",
-      "timestamp": "2026-05-17T15:55:04.939641+00:00",
+      "timestamp": "2026-05-17T16:29:03.435028+00:00",
       "published": "2026-05-08T10:18:10.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1247,7 +1299,7 @@
       "confidence": 0.45,
       "summary": "Avian  # Influenza    # Report   - April 26 \u2013 May 2 '26 (Wk 18) (HK CHP, May 5, 2026): 1 new  # human    # H5N1   case in  # Bangladesh  ; 1 new  # H9N2   case in  # China  ,   https://  etidiohnew.blogspot.com/2026/0  5/avian-influenza-report-april-26-may-2.html",
       "url": "https://mstdn.science/@GMIK69/116522615235064614",
-      "timestamp": "2026-05-17T15:55:04.939948+00:00",
+      "timestamp": "2026-05-17T16:29:03.435333+00:00",
       "published": "2026-05-05T15:13:26.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1272,7 +1324,7 @@
       "confidence": 0.45,
       "summary": "# France   - High pathogenicity avian  # influenza    # H5N1   viruses (Inf. with) ( # poultry  ) - Immediate notification,   https://  etidiohnew.blogspot.com/2026/0  4/france-high-pathogenicity-avian.html",
       "url": "https://mstdn.science/@GMIK69/116494418375413225",
-      "timestamp": "2026-05-17T15:55:04.940286+00:00",
+      "timestamp": "2026-05-17T16:29:03.435667+00:00",
       "published": "2026-04-30T15:42:36.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1297,7 +1349,7 @@
       "confidence": 0.45,
       "summary": "Emergence and  # Evolution   of Triple  # Reassortant   Highly Pathogenic Avian  # Influenza    # H5N1   Virus,  # Argentina  , 2025,   https://  etidiohnew.blogspot.com/2026/0  4/emergence-and-evolution-of-triple.html",
       "url": "https://mstdn.science/@GMIK69/116494406140236888",
-      "timestamp": "2026-05-17T15:55:04.940368+00:00",
+      "timestamp": "2026-05-17T16:29:03.435740+00:00",
       "published": "2026-04-30T15:39:30.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1322,7 +1374,7 @@
       "confidence": 0.45,
       "summary": "# Cambodia   - High pathogenicity avian  # influenza    # H5N1   viruses (Inf. with) ( # poultry  ) - Immediate notification,   https://  etidiohnew.blogspot.com/2026/0  4/cambodia-high-pathogenicity-avian.html",
       "url": "https://mstdn.science/@GMIK69/116494232588655106",
-      "timestamp": "2026-05-17T15:55:04.940433+00:00",
+      "timestamp": "2026-05-17T16:29:03.435806+00:00",
       "published": "2026-04-30T14:55:22.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1347,7 +1399,7 @@
       "confidence": 0.45,
       "summary": "Highly Pathogenic Avian  # Influenza    # H5N1   Clade 2.3.4.4b Virus and Mass  # Mortality   in Eurasian  # Cranes  ,  # Germany  , 2025,   https://  etidiohnew.blogspot.com/2026/0  4/highly-pathogenic-avian-influenza-h5n1_29.html",
       "url": "https://mstdn.science/@GMIK69/116487127947618985",
-      "timestamp": "2026-05-17T15:55:04.940520+00:00",
+      "timestamp": "2026-05-17T16:29:03.435893+00:00",
       "published": "2026-04-29T08:48:33.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1372,7 +1424,7 @@
       "confidence": 0.45,
       "summary": "# h5n1    # birdflu    # avianflu    # vogelgrippe   ##Gefl\u00fcgelpest   &quot;Personen, die beruflich oder in Hobbyhaltung mit lebendem oder totem Gefl\u00fcgel umgehen, sollten unbedingt einen Atemschutz tragen. Zudem sei gr\u00fcndliche Handhygiene durch h\u00e4ufiges Waschen oder die Verwendun",
       "url": "https://mastodon.social/@finally/116486692781216473",
-      "timestamp": "2026-05-17T15:55:04.940865+00:00",
+      "timestamp": "2026-05-17T16:29:03.436253+00:00",
       "published": "2026-04-29T06:57:53.742Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1397,7 +1449,7 @@
       "confidence": 0.45,
       "summary": "# h5n1    # birdflu    # avianflu    # vogelgrippe   ##Gefl\u00fcgelpest   &quot;Es ist wahrscheinlich, dass das \u201erosa-Augen\u201c-Virus weltweit unbemerkt zirkuliert, aber m\u00f6glicherweise aufgrund seines milden klinischen Erscheinungsbildes nicht gemeldet wird.&quot;    https://  kathmandu",
       "url": "https://mastodon.social/@finally/116486562087994722",
-      "timestamp": "2026-05-17T15:55:06.519614+00:00",
+      "timestamp": "2026-05-17T16:29:05.072621+00:00",
       "published": "2026-04-29T06:24:39.521Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1422,7 +1474,7 @@
       "confidence": 0.45,
       "summary": "Avian Flu Has Killed Thousands of Birds in the U.S. Pennsylvania Is at the Epicenter.  \n\nThis article originally appeared on Inside Climate News, a nonprofit, non-partisan news organization that covers climate, energy and the environment and a Pennsylvania Capital-Star partners.&",
       "url": "https://drinkofjesus.com/2026/03/28/avian-flu-has-killed-thousands-of-birds-in-the-u-s-pennsylvania-is-at-the-epicenter/",
-      "timestamp": "2026-05-17T15:55:06.520428+00:00",
+      "timestamp": "2026-05-17T16:29:05.073436+00:00",
       "published": "2026-03-28T19:00:00.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1447,7 +1499,7 @@
       "confidence": 0.45,
       "summary": "#YellowFever  and  #dengue  cases surge in South America as  #climatecrisis  fuels health issues\n\n\u2695\ufe0f\ud83e\ude7a\ud83e\udd9f\n\n www.theguardian.com/environment/...    Yellow fever and dengue cases ...",
       "url": "https://bsky.brid.gy/r/https://bsky.app/profile/did:plc:if6y7p5omyllmesesr5mtlga/post/3m5mjvqaewc2i",
-      "timestamp": "2026-05-17T15:55:11.956916+00:00",
+      "timestamp": "2026-05-17T16:29:10.635066+00:00",
       "published": "2025-11-14T20:37:29.988Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1472,7 +1524,7 @@
       "confidence": 0.45,
       "summary": "# FYI    # USA    # MicrobeTV    # TWiV    # ThisWeekInVirology    # DanielGriffin    # VincentRacaniello    # infectiousdiseases    # vaccinate    # vaccines    # avianflu    # birdflu    # measles    # autism    # ASD    # covid19    # covid    # sarscov2    # LongCovid    # RS",
       "url": "https://mastodon.online/@IviChoc/114404330230892420",
-      "timestamp": "2026-05-17T15:55:11.958327+00:00",
+      "timestamp": "2026-05-17T16:29:10.636495+00:00",
       "published": "2025-04-26T12:45:42.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1497,7 +1549,7 @@
       "confidence": 0.45,
       "summary": "# YellowFever    # Columbia     From BBC.com: Colombia declares health emergency after dozens die of yellow fever    https://www.  bbc.com/news/articles/cj68x4p4  12eo",
       "url": "https://m.ai6yr.org/@BakerRL75/114355725050210543",
-      "timestamp": "2026-05-17T15:55:11.958534+00:00",
+      "timestamp": "2026-05-17T16:29:10.636691+00:00",
       "published": "2025-04-17T22:44:46.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1522,9 +1574,165 @@
       "confidence": 0.6,
       "summary": "Congo declares end of two-year mpox outbreak that killed over 2,000   http://  newsfeed.facilit8.network/TRry  tm    # Congo    # Mpox    # PublicHealth    # Outbreak    # HealthNews",
       "url": "https://journa.host/@africa/116341061038060154",
-      "timestamp": "2026-05-17T15:54:59.579268+00:00",
+      "timestamp": "2026-05-17T16:28:58.484214+00:00",
       "published": "2026-04-03T13:41:49.000Z",
       "is_traveler": true,
+      "anomaly": false,
+      "anomaly_factor": null
+    },
+    {
+      "id": "ec6c2f2c407d",
+      "source": "trends",
+      "type": "search_spike",
+      "disease": "dengue",
+      "category": "vector-borne",
+      "emoji": "\ud83e\udd9f",
+      "location": {
+        "lat": 36.2,
+        "lng": 138.25,
+        "name": "Japan",
+        "country": "Japan",
+        "iso": "JP",
+        "region": "East Asia"
+      },
+      "severity": 6,
+      "confidence": 0.6,
+      "summary": "Google Trends: 'dengue travel' search interest at 72/100 in Japan",
+      "url": "https://trends.google.com/trends/explore?q=dengue%20travel",
+      "timestamp": "2026-05-17T16:29:17.177512+00:00",
+      "published": "last 7 days",
+      "is_traveler": true,
+      "trend_score": 72,
+      "anomaly": false,
+      "anomaly_factor": null
+    },
+    {
+      "id": "c312336f37fc",
+      "source": "trends",
+      "type": "search_spike",
+      "disease": "dengue",
+      "category": "vector-borne",
+      "emoji": "\ud83e\udd9f",
+      "location": {
+        "lat": 35.91,
+        "lng": 127.77,
+        "name": "South Korea",
+        "country": "South Korea",
+        "iso": "KR",
+        "region": "East Asia"
+      },
+      "severity": 6,
+      "confidence": 0.6,
+      "summary": "Google Trends: 'dengue travel' search interest at 69/100 in South Korea",
+      "url": "https://trends.google.com/trends/explore?q=dengue%20travel",
+      "timestamp": "2026-05-17T16:29:17.177601+00:00",
+      "published": "last 7 days",
+      "is_traveler": true,
+      "trend_score": 69,
+      "anomaly": false,
+      "anomaly_factor": null
+    },
+    {
+      "id": "3f999da6afca",
+      "source": "trends",
+      "type": "search_spike",
+      "disease": "malaria",
+      "category": "vector-borne",
+      "emoji": "\ud83e\udd9f",
+      "location": {
+        "lat": 55.38,
+        "lng": -3.44,
+        "name": "UK",
+        "country": "United Kingdom",
+        "iso": "GB",
+        "region": "Europe"
+      },
+      "severity": 6,
+      "confidence": 0.6,
+      "summary": "Google Trends: 'malaria travel' search interest at 70/100 in United Kingdom",
+      "url": "https://trends.google.com/trends/explore?q=malaria%20travel",
+      "timestamp": "2026-05-17T16:29:17.178408+00:00",
+      "published": "last 7 days",
+      "is_traveler": true,
+      "trend_score": 70,
+      "anomaly": false,
+      "anomaly_factor": null
+    },
+    {
+      "id": "425dbd469844",
+      "source": "trends",
+      "type": "search_spike",
+      "disease": "travel",
+      "category": "unknown",
+      "emoji": "\ud83d\udcc8",
+      "location": {
+        "lat": 14.06,
+        "lng": 108.28,
+        "name": "Vietnam",
+        "country": "Vietnam",
+        "iso": "VN",
+        "region": "SE Asia"
+      },
+      "severity": 6,
+      "confidence": 0.6,
+      "summary": "Google Trends: 'travel illness' search interest at 67/100 in Vietnam",
+      "url": "https://trends.google.com/trends/explore?q=travel%20illness",
+      "timestamp": "2026-05-17T16:29:18.183093+00:00",
+      "published": "last 7 days",
+      "is_traveler": true,
+      "trend_score": 67,
+      "anomaly": false,
+      "anomaly_factor": null
+    },
+    {
+      "id": "7dfb958424f3",
+      "source": "trends",
+      "type": "search_spike",
+      "disease": "travel",
+      "category": "unknown",
+      "emoji": "\ud83d\udcc8",
+      "location": {
+        "lat": 55.38,
+        "lng": -3.44,
+        "name": "UK",
+        "country": "United Kingdom",
+        "iso": "GB",
+        "region": "Europe"
+      },
+      "severity": 6,
+      "confidence": 0.6,
+      "summary": "Google Trends: 'travel illness' search interest at 66/100 in United Kingdom",
+      "url": "https://trends.google.com/trends/explore?q=travel%20illness",
+      "timestamp": "2026-05-17T16:29:18.183156+00:00",
+      "published": "last 7 days",
+      "is_traveler": true,
+      "trend_score": 66,
+      "anomaly": false,
+      "anomaly_factor": null
+    },
+    {
+      "id": "6d9da9e6e014",
+      "source": "trends",
+      "type": "search_spike",
+      "disease": "travel",
+      "category": "unknown",
+      "emoji": "\ud83d\udcc8",
+      "location": {
+        "lat": -25.27,
+        "lng": 133.78,
+        "name": "Australia",
+        "country": "Australia",
+        "iso": "AU",
+        "region": "Oceania"
+      },
+      "severity": 6,
+      "confidence": 0.6,
+      "summary": "Google Trends: 'travel illness' search interest at 62/100 in Australia",
+      "url": "https://trends.google.com/trends/explore?q=travel%20illness",
+      "timestamp": "2026-05-17T16:29:18.183209+00:00",
+      "published": "last 7 days",
+      "is_traveler": true,
+      "trend_score": 62,
       "anomaly": false,
       "anomaly_factor": null
     },
@@ -1547,7 +1755,7 @@
       "confidence": 0.5,
       "summary": "Ah, yes! Old Ollie Croms. Wretched human and author of tremendous suffering.  \"Cork City Council to consider tiny statue honouring mosquito linked to Oliver Cromwell\u2019s death\"    https://www.  irishexaminer.com/news/munster  /arid-41844780.html     # ireland    # cork    # history",
       "url": "https://mastodon.ie/@questionsandtea/116573098279123338",
-      "timestamp": "2026-05-17T15:54:54.049966+00:00",
+      "timestamp": "2026-05-17T16:28:53.632438+00:00",
       "published": "2026-05-14T13:11:57.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1572,7 +1780,7 @@
       "confidence": 0.55,
       "summary": "Measles outbreak is out of control in Bangladesh. We lost more than 400 babies already. Most are not old enough to be vaccinated. \ud83d\ude2d    https://www.  tbsnews.net/bangladesh/health/  measles-and-related-symptoms-death-toll-surpasses-430-1437966     # measles    # bangladesh    # he",
       "url": "https://social.mitexleo.one/@ml/116562990663465737",
-      "timestamp": "2026-05-17T15:55:01.230650+00:00",
+      "timestamp": "2026-05-17T16:29:00.197644+00:00",
       "published": "2026-05-12T18:21:27.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1597,7 +1805,7 @@
       "confidence": 0.45,
       "summary": "La OMS alerta que la crisis energ\u00e9tica en Cuba retras\u00f3 100.000 cirug\u00edas y aumenta el riesgo de dengue y malaria  \n\n   https://  fed.brid.gy/r/https://www.elna  cional.com/2026/05/la-oms-alerta-que-la-crisis-energetica-en-cuba-retraso-100-000-cirugias-y-aumenta-el-riesgo-de-dengue",
       "url": "https://fed.brid.gy/r/https://www.elnacional.com/2026/05/la-oms-alerta-que-la-crisis-energetica-en-cuba-retraso-100-000-cirugias-y-aumenta-el-riesgo-de-dengue-y-malaria/",
-      "timestamp": "2026-05-17T15:54:54.049541+00:00",
+      "timestamp": "2026-05-17T16:28:53.632013+00:00",
       "published": "2026-05-15T19:44:04.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1622,7 +1830,7 @@
       "confidence": 0.45,
       "summary": "\ud83d\udea8 AI is entering the fight against malaria.   MalarAI combines geospatial modelling, mobility analytics, climate data, and epidemiology to track how malaria spreads across populations.  \ud83c\udf0d Starting in Zanzibar, the project aims to identify transmission hotspots in near real time a",
       "url": "https://mapstodon.space/@WorldPopProject/116561047754508482",
-      "timestamp": "2026-05-17T15:54:54.050571+00:00",
+      "timestamp": "2026-05-17T16:28:53.633062+00:00",
       "published": "2026-05-12T10:07:20.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1647,7 +1855,7 @@
       "confidence": 0.45,
       "summary": "Africa: Malaria Vaccine 'No Magic Bullet' for Elimination: [SciDev.Net] Lagos/Scidev.Net -- Mass rollout of malaria vaccines is beginning to change the landscape of disease control in Africa. But success will depend less on availability and more on how well they are delivered, sa",
       "url": "https://journa.host/@africa/116526382097657273",
-      "timestamp": "2026-05-17T15:54:54.050840+00:00",
+      "timestamp": "2026-05-17T16:28:53.633345+00:00",
       "published": "2026-05-06T07:11:24.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1672,7 +1880,7 @@
       "confidence": 0.45,
       "summary": "Malaria Influenced Human Evolution and Settlement Patterns in Africa  \ud83d\udcf0 Original title: Malaria didn\u2019t just kill early humans, it shaped who we became  \ud83e\udd16 IA: It's clickbait \u26a0\ufe0f \ud83d\udc65 Usuarios: It's clickbait \u26a0\ufe0f  View full AI summary:   https://  killbait.com/en/malaria-influe  nced-hu",
       "url": "https://mastodon.world/@killbait/116523325565562227",
-      "timestamp": "2026-05-17T15:54:54.050983+00:00",
+      "timestamp": "2026-05-17T16:28:53.633489+00:00",
       "published": "2026-05-05T18:14:05.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1697,7 +1905,7 @@
       "confidence": 0.45,
       "summary": "First malaria drug for babies is approved in \u2018major public health milestone\u2019   https://www.  theguardian.com/global-develop  ment/2026/may/02/new-drug-coartem-baby-babies-malaria-who-treatment    # GlobalDevelopment    # GlobalHealth    # Africa    # Ghana    # Malaria    # Drugs",
       "url": "https://halo.nu/@theguardian_science/116503517305086884",
-      "timestamp": "2026-05-17T15:54:54.051766+00:00",
+      "timestamp": "2026-05-17T16:28:53.634268+00:00",
       "published": "2026-05-02T06:16:35.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1722,7 +1930,7 @@
       "confidence": 0.45,
       "summary": "Africa: Africa's Victory Over Malaria Will Be Built at Home: [ALMA] Tanzania, like many countries in Africa, has fought malaria for generations. Our existing tools, from insecticide-treated nets to antimalarial medicines, continue to save millions of lives and they remain essenti",
       "url": "https://journa.host/@africa/116493792359017609",
-      "timestamp": "2026-05-17T15:54:54.052145+00:00",
+      "timestamp": "2026-05-17T16:28:53.634644+00:00",
       "published": "2026-04-30T13:03:24.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1747,7 +1955,7 @@
       "confidence": 0.45,
       "summary": "Stanley Plotkin's contribution to vaccinology has been so significant that the field's textbook, now in its eighth edition, carries his name. But as vaccines increasingly come under attack, Plotkin, now 93, fears he knows what's to come: many children will die from preventative d",
       "url": "https://c.im/@boksy/116168067506796429",
-      "timestamp": "2026-05-17T15:55:06.522053+00:00",
+      "timestamp": "2026-05-17T16:29:05.075073+00:00",
       "published": "2026-03-04T00:27:17.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1772,7 +1980,7 @@
       "confidence": 0.45,
       "summary": "Patiently waiting for blood sucking mosquito species to become endangered species.  # mosquitoes    # culicidae    # insects    # malaria    # dengue    # yellowfever    # zika    # chikungunya    # aedes    # aedesaegypti    # aedesalbopictus    # endangeredspecies    # parasite",
       "url": "https://mastodon.social/@cathill/115295665387772665",
-      "timestamp": "2026-05-17T15:55:11.957246+00:00",
+      "timestamp": "2026-05-17T16:29:10.635397+00:00",
       "published": "2025-09-30T22:43:57.981Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1797,7 +2005,7 @@
       "confidence": 0.45,
       "summary": "Repel, control, and eat mosquitos   # Mosquitos  . They can be an infuriating nuisance. Occasionally (but increasingly) they can be a vector of disease in my part of the world.   This post is going to touch briefly upon some diseases they spread, then focus mostly on which repell",
       "url": "https://vmst.io/@drrjv/112878790604898983",
-      "timestamp": "2026-05-17T15:55:11.959560+00:00",
+      "timestamp": "2026-05-17T16:29:10.637710+00:00",
       "published": "2024-07-31T02:40:55.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1822,7 +2030,7 @@
       "confidence": 0.5,
       "summary": "&quot;Under the guise of &#39;freedom&#39; the DiSantis Administration has established policies that have directly contributed to the  # measles   outbreak that has spread across the state (of  # Florida  ).&quot;    https://www.  alternet.org/florida-vaccines/#       # healthcar",
       "url": "https://mastodon.social/@RonSupportsYou/116584298572410630",
-      "timestamp": "2026-05-17T15:55:01.230099+00:00",
+      "timestamp": "2026-05-17T16:29:00.197122+00:00",
       "published": "2026-05-16T12:40:19.919Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1847,7 +2055,7 @@
       "confidence": 0.6,
       "summary": "Australians Evacuated from Hantavirus Outbreak Ship to Undergo Extended Quarantine in Perth  Australians from a virus-hit ship will be quarantined for 45 days in Perth. Find out who is affected and why this strict measure is in place.   # HantavirusOutbreak  ,  # PerthQuarantine ",
       "url": "https://mastodon.social/@newsletterTF/116554682551293367",
-      "timestamp": "2026-05-17T15:55:14.952185+00:00",
+      "timestamp": "2026-05-17T16:29:13.967849+00:00",
       "published": "2026-05-11T07:08:35.300Z",
       "is_traveler": true,
       "anomaly": false,
@@ -1872,7 +2080,7 @@
       "confidence": 0.6,
       "summary": "Australians returning from a cruise ship with a deadly virus outbreak will undergo a strict 45-day quarantine in Perth. This is much longer than typical quarantine periods.   # HantavirusOutbreak  ,  # PerthQuarantine  ,  # MVHondius  ,  # TravelHealth  ,  # AustraliaNews     htt",
       "url": "https://mastodon.social/@newsletterTF/116554678492758716",
-      "timestamp": "2026-05-17T15:55:14.952288+00:00",
+      "timestamp": "2026-05-17T16:29:13.967964+00:00",
       "published": "2026-05-11T07:07:33.372Z",
       "is_traveler": true,
       "anomaly": false,
@@ -1897,7 +2105,7 @@
       "confidence": 0.45,
       "summary": "\ud83e\udd9f Takhle d\u011bsiv\u011b vypad\u00e1 TOV\u00c1RNA NA KOM\u00c1RY produkuj\u00edc\u00ed 40 milion\u016f moskyt\u016f t\u00fddn\u011b, jen\u017e jsou n\u00e1sledn\u011b vypou\u0161t\u011bni pomoc\u00ed dron\u016f a motorek ven, a kterou v kolumbijsk\u00e9m Medell\u00ednu financuje BILL GATES!\u00a7\u00a7 \ud83e\udd2f \u2026mno\u017een\u00ed kom\u00e1\u0159i jsou toti\u017e nositeli p\u0159irozen\u00e9 bakterie Wolbachia, kter\u00e1 se p\u0159irozen",
       "url": "https://zpravobot.news/@VedatorCZ/116583912754980383",
-      "timestamp": "2026-05-17T15:54:52.467408+00:00",
+      "timestamp": "2026-05-17T16:28:51.568132+00:00",
       "published": "2026-05-16T11:02:12.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1922,7 +2130,7 @@
       "confidence": 0.45,
       "summary": "# Steady    # Klimacrew    Ein Forscherteam hat mithilfe von K\u00fcnstlicher Intelligenz die  # Proteinstrukturen   der  # Flaviviridae  -#Virenfamilie untersucht, zu der u.a.  # HepatitisC  ,  # Zika   und  # Dengue   geh\u00f6ren.  Dabei haben sie Entdeckungen gemacht, die die Entwicklu",
       "url": "https://mastodon.online/@tinoeberl/116571191541124368",
-      "timestamp": "2026-05-17T15:54:52.467603+00:00",
+      "timestamp": "2026-05-17T16:28:51.568348+00:00",
       "published": "2026-05-14T05:07:02.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1947,7 +2155,7 @@
       "confidence": 0.45,
       "summary": "# Moustique   tigre :  # Zika  ,  # dengue  ,  # chikungunya  , la progression semble \"in\u00e9vitable\"  Pr\u00e9sent dans des dizaines de communes du  # PuydeD\u00f4me  , le  # moustiquetigre   continue de s\u2019\u00e9tendre.   https://  france3-regions.franceinfo.fr/  auvergne-rhone-alpes/puy-de-dome/",
       "url": "https://h4.io/@LaGriffe/116539216872799684",
-      "timestamp": "2026-05-17T15:54:52.469615+00:00",
+      "timestamp": "2026-05-17T16:28:51.570390+00:00",
       "published": "2026-05-08T13:35:27.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1972,7 +2180,7 @@
       "confidence": 0.45,
       "summary": "# Nacionales    # Salud    # Dengue   Alerta epidemiol\u00f3gica: Lluvias tempranas disparan la proliferaci\u00f3n de zancudos y casos de dengue en Honduras   https://  elmundo.hn/lluvias-tempranas-d  isparan-la-proliferacion-de-zancudos/?utm_source=dlvr.it&amp;utm_medium=mastodon",
       "url": "https://mastodon.social/@elmundohn/116424471951445472",
-      "timestamp": "2026-05-17T15:54:52.470237+00:00",
+      "timestamp": "2026-05-17T16:28:51.571042+00:00",
       "published": "2026-04-18T07:14:19.225Z",
       "is_traveler": false,
       "anomaly": false,
@@ -1997,7 +2205,7 @@
       "confidence": 0.45,
       "summary": "# Science    # Mosquitoes    # Dengue    # Zika     https://  mastodon.social/@mackayim2022/  116401488581869120    \u201cFor more than 15 years, the World Mosquito Program has worked with Queensland Health to help safeguard the region from diseases like dengue.  The program releases ",
       "url": "https://universeodon.com/@auscandoc/116402657893730251",
-      "timestamp": "2026-05-17T15:54:52.470538+00:00",
+      "timestamp": "2026-05-17T16:28:51.571268+00:00",
       "published": "2026-04-14T10:46:43.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2022,7 +2230,7 @@
       "confidence": 0.45,
       "summary": "As dengue surges globally, an Indian vaccine candidate has entered the final stage of testing, raising hopes for one of the world&#39;s first single-dose shots against the deadly mosquito-borne disease.   https://www.  japantimes.co.jp/news/2026/03/  06/asia-pacific/science-healt",
       "url": "https://mastodon.social/@thejapantimes/116182666556586720",
-      "timestamp": "2026-05-17T15:54:52.472529+00:00",
+      "timestamp": "2026-05-17T16:28:51.573226+00:00",
       "published": "2026-03-06T14:20:01.711Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2047,7 +2255,7 @@
       "confidence": 0.45,
       "summary": "A successful petition at the German Federal Parlament (#Bundestag) proposing to ban  #measles  vaccine. With enough signatures, a committee must now go through this. I suppose children are replaceable for some in Germany.   https://mastodon.social/@BundestagPetitionenNewsbot/1165",
       "url": "https://toot.pouyan.net/objects/2d677929-c8d9-4ba0-91cf-f1e76bab2d39",
-      "timestamp": "2026-05-17T15:55:01.230535+00:00",
+      "timestamp": "2026-05-17T16:29:00.197531+00:00",
       "published": "2026-05-13T07:38:25.513Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2072,7 +2280,7 @@
       "confidence": 0.45,
       "summary": "NYC health officials warn Norma Restaurant patrons of possible exposure to measles  Health officials are warning New Yorkers who dined at a Manhattan Italian restaurant last month that they may have been expose\u2026  # dining    # cooking    # diet    # food    # FineDining    # Ital",
       "url": "https://vive.im/@dc/116532865756628299",
-      "timestamp": "2026-05-17T15:55:01.232180+00:00",
+      "timestamp": "2026-05-17T16:29:00.199154+00:00",
       "published": "2026-05-07T10:40:17.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2097,7 +2305,7 @@
       "confidence": 0.45,
       "summary": "RE:   https://  universeodon.com/@WADeptHealth  /116494562649037252    Please take care of yourselves, and take this threat seriously. There's always unvaccinated babies, and a growing number of adults are no longer immune.    # Measles",
       "url": "https://infosec.exchange/@nolsen311/116494892896048802",
-      "timestamp": "2026-05-17T15:55:01.232927+00:00",
+      "timestamp": "2026-05-17T16:29:00.199877+00:00",
       "published": "2026-04-30T17:43:17.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2122,7 +2330,7 @@
       "confidence": 0.45,
       "summary": "Nigeria's Health Minister Confirms Mass Vaccination Against  # Measles  ,  # YellowFever   @PremiumTimesng:   https://  allafrica.com/stories/20260104  0050.html?utm_campaign=allafrica%3Aeditor&amp;utm_medium=social&amp;utm_source=twitter&amp;utm_content=promote%3Aaans%3Aababae  ",
       "url": "https://mastox.eu/@allafrica/115839117777863580",
-      "timestamp": "2026-05-17T15:55:11.956701+00:00",
+      "timestamp": "2026-05-17T16:29:10.634841+00:00",
       "published": "2026-01-04T22:11:03.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2147,7 +2355,7 @@
       "confidence": 0.45,
       "summary": "# geneticallymodified    # mosquitoes    # latinamerica    # dengue    # zika    # yellowfever     # mexico    # brazil     \u201cA program that uses genetically engineered mosquitoes in Brazil, Colombia and Mexico to reduce the prevalence of diseases that can be fatal may soon serve ",
       "url": "https://mastodon.social/@tuckfrump/111937563412398042",
-      "timestamp": "2026-05-17T15:55:11.960532+00:00",
+      "timestamp": "2026-05-17T16:29:10.638685+00:00",
       "published": "2024-02-15T21:14:28.283Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2172,7 +2380,7 @@
       "confidence": 0.45,
       "summary": "New pill to battle Delhi belly! \ud83d\udc8a Researchers developed a swallowable vaccine targeting E. coli &amp; typhoid, offering protection for travelers. Clinical trials are planned. Get ready for safer travels! \ud83c\udf0d\u2708\ufe0f  # DelhiBelly    # TravelHealth    # Vaccine    # Science     https://  ",
       "url": "https://mas.to/@nemo/114342197698141579",
-      "timestamp": "2026-05-17T15:55:14.954136+00:00",
+      "timestamp": "2026-05-17T16:29:13.969796+00:00",
       "published": "2025-04-15T13:24:35.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2197,7 +2405,7 @@
       "confidence": 0.5,
       "summary": "# Orthopoxvirus    # Antibodies   in Feral  # Mammals   in  # Mpox    # Outbreak   Areas,  # Nigeria  , 2021\u20132022,   https://  etidiohnew.blogspot.com/2026/0  4/orthopoxvirus-antibodies-in-feral.html",
       "url": "https://mstdn.science/@GMIK69/116492779033237067",
-      "timestamp": "2026-05-17T15:54:59.578191+00:00",
+      "timestamp": "2026-05-17T16:28:58.483128+00:00",
       "published": "2026-04-30T08:45:42.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2222,7 +2430,7 @@
       "confidence": 0.5,
       "summary": "Melbourne reported twelve Mpox cases last week, a new surge in Australia&#39;s largest city. Melbourne&#39;s last Mpox surge began in April 2024 with three unrelated local cases. Outbreaks followed in major metropolitan communities in Australia. Image: Mpox vaccine poster at saun",
       "url": "https://mastodon.social/@3cr_inyaface/116463077866789335",
-      "timestamp": "2026-05-17T15:54:59.578581+00:00",
+      "timestamp": "2026-05-17T16:28:58.483500+00:00",
       "published": "2026-04-25T02:52:18.750Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2247,7 +2455,7 @@
       "confidence": 0.45,
       "summary": "@ theleftistlawyer      The current  # mpox   vaccine (Jynneos) is a  # smallpox   vaccine.  It was developed because the threat of smallpox is NOT eradicated.   The vaccine has proven safe and effective. A million people have gotten it in the US since 2022 with a very low rate o",
       "url": "https://mastodon.social/@2qx/116532192009068371",
-      "timestamp": "2026-05-17T15:54:59.578065+00:00",
+      "timestamp": "2026-05-17T16:28:58.483010+00:00",
       "published": "2026-05-07T07:48:56.881Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2272,7 +2480,7 @@
       "confidence": 0.45,
       "summary": "Ontario\u2019s 1st cases of another mpox variant reported in Toronto Toronto Public Health is asking people to ensure they're vaccinated if eligible to prevent transmission, with officials saying two doses will ensure proper protection.  # Canada    # Health    # monkeypox    # Mpox  ",
       "url": "https://mastodon.hongkongers.net/@glhamilton_mirror/116206960235315651",
-      "timestamp": "2026-05-17T15:54:59.580586+00:00",
+      "timestamp": "2026-05-17T16:28:58.485513+00:00",
       "published": "2026-03-10T21:18:13.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2297,7 +2505,7 @@
       "confidence": 0.45,
       "summary": "Chikungunya: what UK travellers should know about this mosquito-borne virus  # Health    # Chikungunya    # UKTravel    # TravelHealth    # Vaccines    # Mosquitoes    # MosquitoBorne    # VirusAlert    # PublicHealth    # InfectiousDiseases    # TravelTips    # GlobalHealth    #",
       "url": "https://mastodon.world/@The14/115062601313629639",
-      "timestamp": "2026-05-17T15:55:14.954032+00:00",
+      "timestamp": "2026-05-17T16:29:13.969692+00:00",
       "published": "2025-08-20T18:52:42.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2322,7 +2530,7 @@
       "confidence": 0.5,
       "summary": "# WHO   (20 March 2024). Disease  # Outbreak    # News  ;  # Yellowfever   in  # African   Region ( # AFRO  ). Available at:   https://www.  who.int/emergencies/disease-ou  tbreak-news/item/2022-DON510     Since the beginning of 23, &amp; as of 25 Feb 24, a total of 13 countries ",
       "url": "https://mstdn.science/@GMIK69/112129005026086767",
-      "timestamp": "2026-05-17T15:55:11.960398+00:00",
+      "timestamp": "2026-05-17T16:29:10.638546+00:00",
       "published": "2024-03-20T16:40:35.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2347,7 +2555,7 @@
       "confidence": 0.45,
       "summary": "For folks who don't know this term, many of us Asian women from/or living in  # SouthEastAsia   use it to describe the majority of CIS  # YellowFever   (mostly white but not all) guys who strictly go to SE Asia to hunt for women. We call them  # LBHs   -&gt; Losers Back Home.  If",
       "url": "https://beige.party/@PhoenixSerenity/114814939395098224",
-      "timestamp": "2026-05-17T15:55:11.957848+00:00",
+      "timestamp": "2026-05-17T16:29:10.636009+00:00",
       "published": "2025-07-08T01:09:01.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2372,7 +2580,7 @@
       "confidence": 0.45,
       "summary": "Confirmados 33 casos de  # fiebreamarilla   { # YellowFever  } en cinco  # pa\u00edses   de  # Am\u00e9rica     https://  boletinaldia.sld.cu/aldia/2024  /08/02/confirmados-33-casos-de-fiebre-amarilla-en-cinco-paises-de-america/     Los registros ocurrieron en cinco pa\u00edses:  # Bolivia   (4",
       "url": "https://mstdn.science/@GMIK69/112893325478400716",
-      "timestamp": "2026-05-17T15:55:11.959346+00:00",
+      "timestamp": "2026-05-17T16:29:10.637497+00:00",
       "published": "2024-08-02T16:17:20.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2397,7 +2605,7 @@
       "confidence": 0.45,
       "summary": "Roots of  # fetishization   is traced to  # colonizers   treating  # BIPOC   as curiosities.   # Black   bodies were  # eroticized   by  # Europeans   &amp; when they invaded different  # African   countries, fascination &amp; fetishization of  # AfricanWomen   was frequent.   Fe",
       "url": "https://mastodon.sdf.org/@msquebanh/112503776315561250",
-      "timestamp": "2026-05-17T15:55:11.959697+00:00",
+      "timestamp": "2026-05-17T16:29:10.637844+00:00",
       "published": "2024-05-25T21:09:52.000Z",
       "is_traveler": false,
       "anomaly": false,
@@ -2485,6 +2693,28 @@
       "has_anomaly": false
     },
     {
+      "iso": "NG",
+      "name": "Nigeria",
+      "lat": 9.08,
+      "lng": 7.49,
+      "region": "West Africa",
+      "signals": 4,
+      "max_severity": 10,
+      "threat_level": "CRITICAL",
+      "diseases": [
+        "lassa fever",
+        "malaria",
+        "measles",
+        "mpox"
+      ],
+      "sources": [
+        "mastodon",
+        "news"
+      ],
+      "has_traveler_signals": false,
+      "has_anomaly": false
+    },
+    {
       "iso": "CF",
       "name": "Central African Republic",
       "lat": 6.61,
@@ -2516,7 +2746,7 @@
       "lat": -22.91,
       "lng": -43.17,
       "region": "Latin America",
-      "signals": 13,
+      "signals": 14,
       "max_severity": 10,
       "threat_level": "CRITICAL",
       "diseases": [
@@ -2535,7 +2765,8 @@
         "yellow fever"
       ],
       "sources": [
-        "mastodon"
+        "mastodon",
+        "trends"
       ],
       "has_traveler_signals": true,
       "has_anomaly": false
@@ -2564,17 +2795,19 @@
       "lat": 36.2,
       "lng": 138.25,
       "region": "East Asia",
-      "signals": 2,
+      "signals": 3,
       "max_severity": 10,
       "threat_level": "CRITICAL",
       "diseases": [
+        "dengue",
         "ebola",
         "malaria"
       ],
       "sources": [
-        "mastodon"
+        "mastodon",
+        "trends"
       ],
-      "has_traveler_signals": false,
+      "has_traveler_signals": true,
       "has_anomaly": false
     },
     {
@@ -2681,7 +2914,7 @@
       "lat": 23.68,
       "lng": 90.36,
       "region": "South Asia",
-      "signals": 6,
+      "signals": 5,
       "max_severity": 9,
       "threat_level": "CRITICAL",
       "diseases": [
@@ -2691,7 +2924,6 @@
       ],
       "sources": [
         "mastodon",
-        "news",
         "who"
       ],
       "has_traveler_signals": false,
@@ -2779,19 +3011,22 @@
       "lat": 55.38,
       "lng": -3.44,
       "region": "Europe",
-      "signals": 4,
+      "signals": 6,
       "max_severity": 9,
       "threat_level": "CRITICAL",
       "diseases": [
         "chikungunya",
         "cholera",
         "dengue",
-        "nipah"
+        "malaria",
+        "nipah",
+        "travel"
       ],
       "sources": [
-        "mastodon"
+        "mastodon",
+        "trends"
       ],
-      "has_traveler_signals": false,
+      "has_traveler_signals": true,
       "has_anomaly": false
     },
     {
@@ -2800,17 +3035,19 @@
       "lat": 14.06,
       "lng": 108.28,
       "region": "SE Asia",
-      "signals": 2,
+      "signals": 3,
       "max_severity": 9,
       "threat_level": "CRITICAL",
       "diseases": [
         "fever",
-        "nipah"
+        "nipah",
+        "travel"
       ],
       "sources": [
-        "mastodon"
+        "mastodon",
+        "trends"
       ],
-      "has_traveler_signals": false,
+      "has_traveler_signals": true,
       "has_anomaly": false
     },
     {
@@ -2850,6 +3087,26 @@
         "who"
       ],
       "has_traveler_signals": false,
+      "has_anomaly": false
+    },
+    {
+      "iso": "MX",
+      "name": "Mexico",
+      "lat": 23.63,
+      "lng": -102.55,
+      "region": "Latin America",
+      "signals": 2,
+      "max_severity": 8,
+      "threat_level": "CRITICAL",
+      "diseases": [
+        "dengue",
+        "travel"
+      ],
+      "sources": [
+        "mastodon",
+        "trends"
+      ],
+      "has_traveler_signals": true,
       "has_anomaly": false
     },
     {
@@ -2894,16 +3151,18 @@
       "lat": -25.27,
       "lng": 133.78,
       "region": "Oceania",
-      "signals": 3,
+      "signals": 4,
       "max_severity": 8,
       "threat_level": "CRITICAL",
       "diseases": [
         "h5n1",
         "mpox",
+        "travel",
         "unknown illness"
       ],
       "sources": [
-        "mastodon"
+        "mastodon",
+        "trends"
       ],
       "has_traveler_signals": true,
       "has_anomaly": false
@@ -2983,26 +3242,6 @@
       "has_anomaly": false
     },
     {
-      "iso": "MX",
-      "name": "Mexico",
-      "lat": 23.63,
-      "lng": -102.55,
-      "region": "Latin America",
-      "signals": 2,
-      "max_severity": 7,
-      "threat_level": "HIGH",
-      "diseases": [
-        "dengue",
-        "measles"
-      ],
-      "sources": [
-        "mastodon",
-        "news"
-      ],
-      "has_traveler_signals": false,
-      "has_anomaly": false
-    },
-    {
       "iso": "CU",
       "name": "Cuba",
       "lat": 21.52,
@@ -3013,26 +3252,6 @@
       "threat_level": "HIGH",
       "diseases": [
         "malaria"
-      ],
-      "sources": [
-        "mastodon"
-      ],
-      "has_traveler_signals": false,
-      "has_anomaly": false
-    },
-    {
-      "iso": "NG",
-      "name": "Nigeria",
-      "lat": 6.52,
-      "lng": 3.38,
-      "region": "West Africa",
-      "signals": 3,
-      "max_severity": 7,
-      "threat_level": "HIGH",
-      "diseases": [
-        "malaria",
-        "measles",
-        "mpox"
       ],
       "sources": [
         "mastodon"
@@ -3113,6 +3332,42 @@
         "who"
       ],
       "has_traveler_signals": false,
+      "has_anomaly": false
+    },
+    {
+      "iso": "PH",
+      "name": "Philippines",
+      "lat": 12.88,
+      "lng": 121.77,
+      "region": "SE Asia",
+      "signals": 1,
+      "max_severity": 6,
+      "threat_level": "HIGH",
+      "diseases": [
+        "dengue"
+      ],
+      "sources": [
+        "news"
+      ],
+      "has_traveler_signals": false,
+      "has_anomaly": false
+    },
+    {
+      "iso": "KR",
+      "name": "South Korea",
+      "lat": 35.91,
+      "lng": 127.77,
+      "region": "East Asia",
+      "signals": 1,
+      "max_severity": 6,
+      "threat_level": "HIGH",
+      "diseases": [
+        "dengue"
+      ],
+      "sources": [
+        "trends"
+      ],
+      "has_traveler_signals": true,
       "has_anomaly": false
     },
     {
@@ -3417,6 +3672,111 @@
       "diseases": [
         "anthrax",
         "nipah"
+      ],
+      "severity": 10
+    },
+    {
+      "from": {
+        "lat": 6.52,
+        "lng": 3.38,
+        "city": "Lagos",
+        "iata": "LOS"
+      },
+      "to": {
+        "lat": 51.47,
+        "lng": -0.46,
+        "iata": "LHR"
+      },
+      "threat_level": "CRITICAL",
+      "diseases": [
+        "lassa fever",
+        "malaria",
+        "measles",
+        "mpox"
+      ],
+      "severity": 10
+    },
+    {
+      "from": {
+        "lat": 6.52,
+        "lng": 3.38,
+        "city": "Lagos",
+        "iata": "LOS"
+      },
+      "to": {
+        "lat": 25.25,
+        "lng": 55.36,
+        "iata": "DXB"
+      },
+      "threat_level": "CRITICAL",
+      "diseases": [
+        "lassa fever",
+        "malaria",
+        "measles",
+        "mpox"
+      ],
+      "severity": 10
+    },
+    {
+      "from": {
+        "lat": 6.52,
+        "lng": 3.38,
+        "city": "Lagos",
+        "iata": "LOS"
+      },
+      "to": {
+        "lat": 8.98,
+        "lng": 38.8,
+        "iata": "ADD"
+      },
+      "threat_level": "CRITICAL",
+      "diseases": [
+        "lassa fever",
+        "malaria",
+        "measles",
+        "mpox"
+      ],
+      "severity": 10
+    },
+    {
+      "from": {
+        "lat": 6.52,
+        "lng": 3.38,
+        "city": "Lagos",
+        "iata": "LOS"
+      },
+      "to": {
+        "lat": -26.14,
+        "lng": 28.25,
+        "iata": "JNB"
+      },
+      "threat_level": "CRITICAL",
+      "diseases": [
+        "lassa fever",
+        "malaria",
+        "measles",
+        "mpox"
+      ],
+      "severity": 10
+    },
+    {
+      "from": {
+        "lat": 6.52,
+        "lng": 3.38,
+        "city": "Lagos",
+        "iata": "LOS"
+      },
+      "to": {
+        "lat": 49.01,
+        "lng": 2.55,
+        "iata": "CDG"
+      },
+      "threat_level": "CRITICAL",
+      "diseases": [
+        "lassa fever",
+        "malaria",
+        "measles",
+        "mpox"
       ],
       "severity": 10
     },
@@ -4157,12 +4517,12 @@
         "lng": -118.41,
         "iata": "LAX"
       },
-      "threat_level": "HIGH",
+      "threat_level": "CRITICAL",
       "diseases": [
         "dengue",
-        "measles"
+        "travel"
       ],
-      "severity": 7
+      "severity": 8
     },
     {
       "from": {
@@ -4176,12 +4536,12 @@
         "lng": -80.29,
         "iata": "MIA"
       },
-      "threat_level": "HIGH",
+      "threat_level": "CRITICAL",
       "diseases": [
         "dengue",
-        "measles"
+        "travel"
       ],
-      "severity": 7
+      "severity": 8
     },
     {
       "from": {
@@ -4195,12 +4555,12 @@
         "lng": -73.78,
         "iata": "JFK"
       },
-      "threat_level": "HIGH",
+      "threat_level": "CRITICAL",
       "diseases": [
         "dengue",
-        "measles"
+        "travel"
       ],
-      "severity": 7
+      "severity": 8
     },
     {
       "from": {
@@ -4214,12 +4574,12 @@
         "lng": -3.57,
         "iata": "MAD"
       },
-      "threat_level": "HIGH",
+      "threat_level": "CRITICAL",
       "diseases": [
         "dengue",
-        "measles"
+        "travel"
       ],
-      "severity": 7
+      "severity": 8
     },
     {
       "from": {
@@ -4233,159 +4593,61 @@
         "lng": -74.15,
         "iata": "BOG"
       },
-      "threat_level": "HIGH",
+      "threat_level": "CRITICAL",
       "diseases": [
         "dengue",
-        "measles"
+        "travel"
       ],
-      "severity": 7
-    },
-    {
-      "from": {
-        "lat": 6.52,
-        "lng": 3.38,
-        "city": "Lagos",
-        "iata": "LOS"
-      },
-      "to": {
-        "lat": 51.47,
-        "lng": -0.46,
-        "iata": "LHR"
-      },
-      "threat_level": "HIGH",
-      "diseases": [
-        "malaria",
-        "measles",
-        "mpox"
-      ],
-      "severity": 7
-    },
-    {
-      "from": {
-        "lat": 6.52,
-        "lng": 3.38,
-        "city": "Lagos",
-        "iata": "LOS"
-      },
-      "to": {
-        "lat": 25.25,
-        "lng": 55.36,
-        "iata": "DXB"
-      },
-      "threat_level": "HIGH",
-      "diseases": [
-        "malaria",
-        "measles",
-        "mpox"
-      ],
-      "severity": 7
-    },
-    {
-      "from": {
-        "lat": 6.52,
-        "lng": 3.38,
-        "city": "Lagos",
-        "iata": "LOS"
-      },
-      "to": {
-        "lat": 8.98,
-        "lng": 38.8,
-        "iata": "ADD"
-      },
-      "threat_level": "HIGH",
-      "diseases": [
-        "malaria",
-        "measles",
-        "mpox"
-      ],
-      "severity": 7
-    },
-    {
-      "from": {
-        "lat": 6.52,
-        "lng": 3.38,
-        "city": "Lagos",
-        "iata": "LOS"
-      },
-      "to": {
-        "lat": -26.14,
-        "lng": 28.25,
-        "iata": "JNB"
-      },
-      "threat_level": "HIGH",
-      "diseases": [
-        "malaria",
-        "measles",
-        "mpox"
-      ],
-      "severity": 7
-    },
-    {
-      "from": {
-        "lat": 6.52,
-        "lng": 3.38,
-        "city": "Lagos",
-        "iata": "LOS"
-      },
-      "to": {
-        "lat": 49.01,
-        "lng": 2.55,
-        "iata": "CDG"
-      },
-      "threat_level": "HIGH",
-      "diseases": [
-        "malaria",
-        "measles",
-        "mpox"
-      ],
-      "severity": 7
+      "severity": 8
     }
   ],
   "stats": {
-    "total_signals": 96,
+    "total_signals": 104,
     "by_source": {
       "who": 11,
+      "news": 2,
       "mastodon": 83,
-      "news": 2
+      "trends": 8
     },
     "by_category": {
-      "hemorrhagic": 12,
+      "hemorrhagic": 13,
       "viral": 17,
-      "vaccine-preventable": 10,
+      "vaccine-preventable": 8,
       "respiratory": 16,
       "bacterial": 2,
-      "vector-borne": 24,
+      "vector-borne": 29,
       "waterborne": 8,
-      "unknown": 7
+      "unknown": 11
     },
     "by_severity": {
-      "critical": 53,
-      "high": 31,
+      "critical": 56,
+      "high": 36,
       "moderate": 12,
       "low": 0
     },
     "by_region": {
       "East Africa": 7,
       "Central Africa": 13,
-      "South Asia": 11,
-      "West Africa": 9,
-      "SE Asia": 9,
-      "Latin America": 27,
-      "Europe": 11,
-      "East Asia": 2,
+      "South Asia": 10,
+      "West Africa": 10,
+      "SE Asia": 11,
+      "Latin America": 28,
+      "Europe": 13,
+      "East Asia": 4,
       "Caribbean": 2,
-      "Oceania": 3,
+      "Oceania": 4,
       "North Africa": 2
     },
     "by_type": {
       "official_alert": 11,
-      "traveler_report": 14,
       "outbreak_report": 2,
-      "symptom_report": 69
+      "traveler_report": 14,
+      "symptom_report": 69,
+      "search_spike": 8
     },
-    "countries_affected": 37,
-    "traveler_signals": 14,
+    "countries_affected": 39,
+    "traveler_signals": 22,
     "anomalies_detected": 0,
-    "scan_duration_sec": 116.7
+    "scan_duration_sec": 190.6
   }
 }
