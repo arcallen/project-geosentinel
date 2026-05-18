@@ -2,15 +2,16 @@
 
 **Global Disease Surveillance via OSINT**
 
-Real-time disease outbreak monitoring using open-source intelligence. Replacing expensive, slow clinic-based surveillance with automated multi-source signal detection.
+Real-time disease outbreak monitoring using open-source intelligence. An early-warning layer that complements (does not replace) clinic-based surveillance like the original [GeoSentinel](https://www.istm.org/geosentinel) network — useful for picking up the first weak signals of an outbreak before they reach formal channels.
 
-<img src="https://img.shields.io/badge/signals-live-brightgreen" alt="Live"> <img src="https://img.shields.io/badge/sources-4-blue" alt="Sources"> <img src="https://img.shields.io/badge/updates-every%2030%20min-orange" alt="Updates">
+<img src="https://img.shields.io/badge/signals-live-brightgreen" alt="Live"> <img src="https://img.shields.io/badge/sources-5-blue" alt="Sources"> <img src="https://img.shields.io/badge/updates-every%2030%20min-orange" alt="Updates">
 
 ## 🛰️ Data Sources
 
 | Source | Type | Coverage |
 |--------|------|----------|
 | 🏥 **WHO** | Disease Outbreak News API | Official alerts, global |
+| 🌎 **PAHO** | News RSS (WHO Americas region) | Faster than HQ for the Americas |
 | 📰 **GDELT** | Global news (CDC, Reuters, AFP, Al Jazeera...) | Breaking outbreaks |
 | 🐘 **Mastodon** | Public hashtag timelines | Symptom reports, early signals |
 | 💬 **Reddit** | Community reports (OAuth, app-only) | Travel health experiences |
@@ -30,8 +31,9 @@ Real-time disease outbreak monitoring using open-source intelligence. Replacing 
 ```
 GitHub Actions (cron 30 min)
     → scanner_v2.py (Python stdlib only)
-        → WHO + GDELT + Mastodon + Reddit OAuth
+        → WHO + PAHO + GDELT + Mastodon + Reddit OAuth
         → NLP disease detection + geocoding + anomaly scoring
+        → case/death count extraction (regex on official sources)
         → signals.json (generated in-runner, not committed)
     → GitHub Pages (deployed from same job's artifact)
         → index.html (Leaflet map + dashboard)
@@ -43,8 +45,8 @@ GitHub Actions (cron 30 min)
 
 Auto-deploys via GitHub Pages. Every 30 minutes:
 
-1. Scanner collects signals from four sources
-2. Processes, deduplicates, scores, and geocodes
+1. Scanner collects signals from five sources
+2. Processes, deduplicates, scores, geocodes, and extracts case/death counts
 3. Writes `signals.json` to the runner filesystem (not committed)
 4. Pages serves the updated dashboard from the artifact
 
@@ -71,9 +73,9 @@ If either is missing, Reddit is skipped silently and the other sources still run
 
 ## ⚕️ Background
 
-The original [GeoSentinel](https://www.istm.org/geosentinel) is a WHO/CDC/ISTM clinic-based surveillance network — 70 clinics worldwide, slow reporting, limited coverage.
+The original [GeoSentinel](https://www.istm.org/geosentinel) is the ISTM/CDC travel-medicine surveillance network — ~70 clinics worldwide collecting validated, patient-level data from returning travelers. It is the authoritative source for travel-related infectious disease epidemiology; this project is **not** a substitute for it.
 
-**GeoSentinel 2.0** is an OSINT-based complement: faster signal, broader sources, free to run.
+**GeoSentinel 2.0** is an OSINT layer: faster but noisier, useful for flagging signals that warrant a closer look from real epi systems. Absence of signal here does not mean absence of outbreak — coverage is English-skewed and biased toward regions with active news/social media.
 
 ## 📜 License
 

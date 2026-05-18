@@ -91,10 +91,10 @@
   .sig-badges{margin-left:auto;display:flex;gap:3px}
   .badge{font-size:.42rem;padding:2px 6px;border-radius:10px;font-weight:600}
   .badge.who{color:var(--un-blue);background:var(--un-light)}
+  .badge.paho{color:#0c7c59;background:#e0f2eb}
   .badge.mastodon{color:#6364ff;background:#eaeaff}
   .badge.news{color:#7c3aed;background:#ede9fe}
   .badge.reddit{color:#ff4500;background:#fff0e6}
-  .badge.trends{color:var(--low);background:var(--low-bg)}
   .badge.traveler{color:#d81b60;background:#fce4ec}
   .badge.anomaly{color:var(--critical);background:var(--crit-bg);animation:pulse-anom 1.5s infinite}
   @keyframes pulse-anom{0%,100%{opacity:1}50%{opacity:.5}}
@@ -179,6 +179,7 @@
     <span class="tbar-label">Source</span>
     <button class="tbtn on" data-f="source" data-v="all">All</button>
     <button class="tbtn" data-f="source" data-v="who">🏥 WHO</button>
+    <button class="tbtn" data-f="source" data-v="paho">🌎 PAHO</button>
     <button class="tbtn" data-f="source" data-v="news">📰 News</button>
     <button class="tbtn" data-f="source" data-v="mastodon">🐘 Mastodon</button>
     <button class="tbtn" data-f="source" data-v="reddit">💬 Reddit</button>
@@ -240,7 +241,7 @@ let filterSource='all',filterSev='all',filterTime='30d';
 
 const SEV={critical:'#d32f2f',high:'#e65100',moderate:'#f9a825',low:'#2e7d32'};
 const CAT_C={'vector-borne':'#e65100',waterborne:'#0288d1',respiratory:'#7c3aed',viral:'#d32f2f',hemorrhagic:'#b71c1c',bacterial:'#f9a825','vaccine-preventable':'#2e7d32',parasitic:'#ff6f00',unknown:'#90a4ae'};
-const SRC_I={who:'🏥',mastodon:'🐘',news:'📰',reddit:'💬'};
+const SRC_I={who:'🏥',paho:'🌎',mastodon:'🐘',news:'📰',reddit:'💬'};
 
 function sc(s){return s>=8?'c':s>=6?'h':s>=4?'m':'lo'}
 function sl(s){return s>=8?'critical':s>=6?'high':s>=4?'moderate':'low'}
@@ -398,7 +399,7 @@ function renderSignals(){
         <div class="sig-sum">${esc(s.summary)}</div>
       </a>
       <div class="sig-loc" onclick="flyTo(${s.location.lat},${s.location.lng})">${esc(s.location.name)}, ${esc(s.location.country)}</div>
-      <div class="sig-meta"><span>🕐 ${s.published||'unknown'}</span><span>· 🎯 ${(s.confidence*100).toFixed(0)}%</span><span>· ${s.type.replace(/_/g,' ')}</span></div>
+      <div class="sig-meta"><span>🕐 ${s.published||'unknown'}</span><span>· 🎯 ${(s.confidence*100).toFixed(0)}%</span><span>· ${s.type.replace(/_/g,' ')}</span>${s.case_count?`<span>· 🩺 ${s.case_count.toLocaleString()} cases</span>`:''}${s.death_count?`<span>· 💀 ${s.death_count.toLocaleString()} deaths</span>`:''}</div>
     </div>`;
   }).join('');
 }
