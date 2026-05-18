@@ -177,7 +177,7 @@ DISEASES = {
     "diphtheria": {"cat": "vaccine-preventable", "sev": 7, "emoji": "💉"},
     "polio": {"cat": "vaccine-preventable", "sev": 9, "emoji": "💉"},
     "tuberculosis": {"cat": "respiratory", "sev": 7, "emoji": "🫁"},
-    "tb ": {"cat": "respiratory", "sev": 7, "emoji": "🫁"},
+    "tb": {"cat": "respiratory", "sev": 7, "emoji": "🫁"},
     "plague": {"cat": "bacterial", "sev": 9, "emoji": "☠️"},
     "anthrax": {"cat": "bacterial", "sev": 8, "emoji": "☠️"},
     "meningitis": {"cat": "bacterial", "sev": 7, "emoji": "🧠"},
@@ -254,12 +254,20 @@ TRAVELER_PATTERNS = [
 def make_id(text):
     return hashlib.md5(text.encode()).hexdigest()[:12]
 
+def _matches(key, text_lower):
+    """Substring match for long keys; word-boundary match for short ones (≤4 chars)
+    so ambiguous abbreviations like 'car', 'uk', 'rio', 'tb' don't false-positive
+    inside longer words ('cargo', 'puke', 'trio', 'subtle')."""
+    if len(key) <= 4:
+        return re.search(r"\b" + re.escape(key) + r"\b", text_lower) is not None
+    return key in text_lower
+
 def geocode(text):
     """City-level geocoding with priority to more specific matches."""
     t = text.lower()
     for entry in GEO_DB:
         for key in entry["keys"]:
-            if key in t:
+            if _matches(key, t):
                 return {
                     "lat": entry["lat"], "lng": entry["lng"],
                     "name": entry["name"], "country": entry["country"],
@@ -273,7 +281,7 @@ def detect_diseases(text):
     found = []
     seen = set()
     for name, info in sorted(DISEASES.items(), key=lambda x: -len(x[0])):
-        if name in t and info["cat"] not in seen:
+        if _matches(name, t) and info["cat"] not in seen:
             found.append({"name": name.strip(), "cat": info["cat"], "sev": info["sev"], "emoji": info["emoji"]})
             seen.add(name.strip())
     return sorted(found, key=lambda d: -d["sev"])
@@ -469,6 +477,7 @@ def process_mastodon(statuses):
         if loc and (diseases or is_traveler_signal(text)):
             d = diseases[0] if diseases else {"name":"unknown illness","cat":"unknown","sev":4,"emoji":"🌡️"}
             traveler = is_traveler_signal(text)
+            counts = extract_counts(text)
             signals.append({
                 "id": make_id(text),
                 "source": "mastodon",
@@ -484,6 +493,8 @@ def process_mastodon(statuses):
                 "timestamp": datetime.now(timezone.utc).isoformat(),
                 "published": s.get("created_at", ""),
                 "is_traveler": traveler,
+                "case_count": counts.get("cases"),
+                "death_count": counts.get("deaths"),
             })
     return signals
 
@@ -591,6 +602,7 @@ def process_reddit(results):
         if loc and (diseases or is_traveler_signal(text)):
             d = diseases[0] if diseases else {"name":"unknown illness","cat":"unknown","sev":4,"emoji":"🌡️"}
             traveler = is_traveler_signal(text)
+            counts = extract_counts(text)
             signals.append({
                 "id": make_id(text),
                 "source": "reddit",
@@ -606,6 +618,8 @@ def process_reddit(results):
                 "timestamp": datetime.now(timezone.utc).isoformat(),
                 "published": r.get("published", ""),
                 "is_traveler": traveler,
+                "case_count": counts.get("cases"),
+                "death_count": counts.get("deaths"),
             })
     return signals
 
