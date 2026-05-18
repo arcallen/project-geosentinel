@@ -1,20 +1,19 @@
 # 🌐 GeoSentinel 2.0
 
-**AI-Powered Global Disease Surveillance Network**
+**Global Disease Surveillance via OSINT**
 
-Real-time disease outbreak monitoring using open-source intelligence (OSINT). Replacing expensive, slow clinic-based surveillance with automated multi-source signal detection.
+Real-time disease outbreak monitoring using open-source intelligence. Replacing expensive, slow clinic-based surveillance with automated multi-source signal detection.
 
-<img src="https://img.shields.io/badge/signals-live-brightgreen" alt="Live"> <img src="https://img.shields.io/badge/sources-5-blue" alt="Sources"> <img src="https://img.shields.io/badge/updates-every%2030%20min-orange" alt="Updates">
+<img src="https://img.shields.io/badge/signals-live-brightgreen" alt="Live"> <img src="https://img.shields.io/badge/sources-4-blue" alt="Sources"> <img src="https://img.shields.io/badge/updates-every%2030%20min-orange" alt="Updates">
 
 ## 🛰️ Data Sources
 
 | Source | Type | Coverage |
 |--------|------|----------|
 | 🏥 **WHO** | Disease Outbreak News API | Official alerts, global |
-| 📰 **News** | Brave Search (CDC, Reuters, Al Jazeera...) | Breaking outbreaks |
-| 𝕏 **Twitter/X** | Real-time social signals | Traveler reports, early detection |
-| 💬 **Reddit** | Community reports | Travel health experiences |
-| 📈 **Google Trends** | Search trend anomalies | Population-level signals |
+| 📰 **GDELT** | Global news (CDC, Reuters, AFP, Al Jazeera...) | Breaking outbreaks |
+| 🐘 **Mastodon** | Public hashtag timelines | Symptom reports, early signals |
+| 💬 **Reddit** | Community reports (OAuth, app-only) | Travel health experiences |
 
 ## 🔬 Features
 
@@ -24,17 +23,17 @@ Real-time disease outbreak monitoring using open-source intelligence (OSINT). Re
 - **Flight risk modeling** — maps potential disease spread via air routes
 - **Interactive map** — Leaflet-based with severity-coded markers
 - **Multi-severity scoring** — 1-10 scale: critical, high, moderate, low
-- **Source-filtered views** — filter by WHO, news, Twitter, Reddit, or Trends
+- **Source-filtered views** — filter by WHO, news, Mastodon, or Reddit
 
 ## 🏗️ Architecture
 
 ```
 GitHub Actions (cron 30 min)
-    → scanner_v2.py (Python)
-        → WHO API + Brave Search + Twitter + Google Trends
+    → scanner_v2.py (Python stdlib only)
+        → WHO + GDELT + Mastodon + Reddit OAuth
         → NLP disease detection + geocoding + anomaly scoring
-        → signals.json
-    → GitHub Pages (static deploy)
+        → signals.json (generated in-runner, not committed)
+    → GitHub Pages (deployed from same job's artifact)
         → index.html (Leaflet map + dashboard)
 ```
 
@@ -42,16 +41,28 @@ GitHub Actions (cron 30 min)
 
 ## 🚀 Deployment
 
-This site auto-deploys via GitHub Pages. Every 30 minutes:
-1. Scanner collects signals from 5 sources
+Auto-deploys via GitHub Pages. Every 30 minutes:
+
+1. Scanner collects signals from four sources
 2. Processes, deduplicates, scores, and geocodes
-3. Commits `signals.json` to repo
-4. GitHub Pages serves the updated dashboard
+3. Writes `signals.json` to the runner filesystem (not committed)
+4. Pages serves the updated dashboard from the artifact
+
+`signal_history.json` (baselines for anomaly detection) is persisted across runs via GitHub Actions cache.
+
+## ⚙️ Configuration
+
+For Reddit signals, register a "script" app at <https://www.reddit.com/prefs/apps> and add these to **Settings → Secrets and variables → Actions**:
+
+- `REDDIT_CLIENT_ID`
+- `REDDIT_CLIENT_SECRET`
+
+If either is missing, Reddit is skipped silently and the other sources still run.
 
 ## 📊 Signal Processing Pipeline
 
-1. **Collection** — parallel queries across 5 source APIs
-2. **Disease Detection** — regex + NLP matching against 30+ disease patterns
+1. **Collection** — sequential queries across four source APIs
+2. **Disease Detection** — regex matching against 40+ disease patterns
 3. **Geocoding** — 100+ country/city database with region classification
 4. **Severity Scoring** — base disease severity + modifiers (deaths, outbreak scale, traveler)
 5. **Anomaly Detection** — 2× historical baseline comparison
@@ -60,14 +71,10 @@ This site auto-deploys via GitHub Pages. Every 30 minutes:
 
 ## ⚕️ Background
 
-The original [GeoSentinel](https://www.istm.org/geosentinel) is a WHO/CDC/ISTM clinic-based surveillance network — 70 clinics worldwide, slow reporting, limited coverage. 
+The original [GeoSentinel](https://www.istm.org/geosentinel) is a WHO/CDC/ISTM clinic-based surveillance network — 70 clinics worldwide, slow reporting, limited coverage.
 
-**GeoSentinel 2.0** replaces this with AI-powered OSINT: faster, broader, free, and available to everyone.
+**GeoSentinel 2.0** is an OSINT-based complement: faster signal, broader sources, free to run.
 
 ## 📜 License
 
 MIT — Use freely. Attribution appreciated.
-
----
-
-*Built with 🪁 by [Kite](https://github.com/acuestamd)*
