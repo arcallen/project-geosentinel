@@ -45,6 +45,9 @@
   .tsep{width:1px;height:20px;background:var(--light-border);margin:0 6px}
   .ttoggle{font-size:.6rem;padding:4px 10px;border:1px solid var(--light-border);border-radius:16px;background:var(--white);color:var(--dim);cursor:pointer;font-family:inherit;font-weight:500}
   .ttoggle.on{border-color:var(--un-accent);color:var(--un-accent);background:var(--un-light)}
+  .searchbox{font-size:.65rem;padding:5px 10px;border:1px solid var(--light-border);border-radius:16px;background:var(--white);color:var(--text);font-family:inherit;width:200px;outline:none;transition:border-color .15s,width .15s}
+  .searchbox:focus{border-color:var(--un-blue);width:260px}
+  .searchbox::placeholder{color:var(--dim)}
 
   /* Main */
   .main{flex:1;display:flex;overflow:hidden;min-height:0}
@@ -201,6 +204,10 @@
   </div>
   <div class="tsep"></div>
   <div class="tbar-group">
+    <input type="text" id="searchBox" class="searchbox" placeholder="🔍 search disease, country, summary…" autocomplete="off">
+  </div>
+  <div class="tsep"></div>
+  <div class="tbar-group">
     <button class="ttoggle" id="flightToggle" onclick="toggleFlights()">✈️ Flight Routes</button>
     <button class="ttoggle" id="travelerToggle" onclick="toggleTravelers()">🧳 Travelers Only</button>
   </div>
@@ -237,7 +244,7 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 let D=null,activeTab='signals',markers=[],flightLines=[],showFlights=false,showTravelers=false;
-let filterSource='all',filterSev='all',filterTime='30d';
+let filterSource='all',filterSev='all',filterTime='30d',searchQuery='';
 
 const SEV={critical:'#d32f2f',high:'#e65100',moderate:'#f9a825',low:'#2e7d32'};
 const CAT_C={'vector-borne':'#e65100',waterborne:'#0288d1',respiratory:'#7c3aed',viral:'#d32f2f',hemorrhagic:'#b71c1c',bacterial:'#f9a825','vaccine-preventable':'#2e7d32',parasitic:'#ff6f00',unknown:'#90a4ae'};
@@ -308,6 +315,10 @@ function getFiltered(){
       const d=parseAge(s.published);
       if(d&&(now-d.getTime())>cut)return false;
     }
+    if(searchQuery){
+      const hay=`${s.disease||''} ${s.location.country||''} ${s.location.name||''} ${s.summary||''}`.toLowerCase();
+      if(!hay.includes(searchQuery))return false;
+    }
     return true;
   });
 }
@@ -374,6 +385,19 @@ document.querySelectorAll('.tbtn[data-f]').forEach(b=>{
 document.querySelectorAll('.tab').forEach(t=>{
   t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');activeTab=t.dataset.t;renderPanel()};
 });
+
+(function(){
+  const sb=document.getElementById('searchBox');
+  if(!sb)return;
+  let timer=null;
+  sb.addEventListener('input',e=>{
+    clearTimeout(timer);
+    timer=setTimeout(()=>{searchQuery=e.target.value.trim().toLowerCase();refresh();},120);
+  });
+  sb.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){sb.value='';searchQuery='';refresh();sb.blur();}
+  });
+})();
 
 function renderPanel(){if(activeTab==='signals')renderSignals();else if(activeTab==='stats')renderStats();else renderRegions()}
 
