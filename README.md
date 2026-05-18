@@ -95,6 +95,12 @@ The original [GeoSentinel](https://www.istm.org/geosentinel) is the ISTM/CDC tra
 
 **GeoSentinel 2.0** is a sketch of what an OSINT layer on top of that might look like: faster but noisier, useful for flagging signals that warrant a closer look from real epi systems.
 
+## ⚕️ About this project
+
+This is a personal side project — **not** affiliated with WHO, PAHO, ISTM, the real [GeoSentinel](https://www.istm.org/geosentinel) network, or any health authority. It exists as a sketch of what an OSINT outbreak-detection layer could look like, not as a tool anyone should make decisions from.
+
+If you work in epidemiologic surveillance and see something here that's wrong, misleading, or worse, please open an [issue](https://github.com/acuestamd/project-geosentinel/issues). See [CONTRIBUTING.md](CONTRIBUTING.md) for what kind of feedback is most useful.
+
 ## 📜 License
 
 [MIT](LICENSE). Use freely; attribution appreciated. No warranty — see LICENSE for the full disclaimer of liability.
