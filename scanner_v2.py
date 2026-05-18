@@ -201,6 +201,13 @@ DISEASES = {
     "diarrhoea": {"cat": "waterborne", "sev": 3, "emoji": "💧"},
     "fever": {"cat": "unknown", "sev": 4, "emoji": "🌡️"},
     "hiv": {"cat": "viral", "sev": 7, "emoji": "🔴"},
+    "hantavirus": {"cat": "viral", "sev": 8, "emoji": "🐭"},
+    "hanta": {"cat": "viral", "sev": 8, "emoji": "🐭"},
+    "oropouche": {"cat": "vector-borne", "sev": 6, "emoji": "🦟"},
+    "crimean-congo": {"cat": "hemorrhagic", "sev": 9, "emoji": "🩸"},
+    "cchf": {"cat": "hemorrhagic", "sev": 9, "emoji": "🩸"},
+    "west nile": {"cat": "vector-borne", "sev": 5, "emoji": "🦟"},
+    "japanese encephalitis": {"cat": "vector-borne", "sev": 7, "emoji": "🦟"},
 }
 
 # ═══ Major international airport hubs by country ═══
