@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """GeoSentinel 2.0 Scanner — Multi-source disease surveillance with anomaly detection.
-Sources: WHO, GDELT news, Mastodon hashtags, Reddit (OAuth app-only).
-Features: deduplication, traveler detection, anomaly scoring, city-level geocoding."""
+Sources: WHO DON, PAHO (WHO Americas), GDELT news, Mastodon hashtags, Reddit (OAuth).
+Features: deduplication, traveler detection, anomaly scoring, city-level geocoding,
+case/death count extraction."""
 
 import base64
 import json
@@ -10,6 +11,7 @@ import re
 import sys
 import urllib.request
 import urllib.parse
+import xml.etree.ElementTree as ET
 import hashlib
 from datetime import datetime, timezone, timedelta
 from collections import defaultdict
@@ -199,6 +201,13 @@ DISEASES = {
     "diarrhoea": {"cat": "waterborne", "sev": 3, "emoji": "💧"},
     "fever": {"cat": "unknown", "sev": 4, "emoji": "🌡️"},
     "hiv": {"cat": "viral", "sev": 7, "emoji": "🔴"},
+    "hantavirus": {"cat": "viral", "sev": 8, "emoji": "🐭"},
+    "hanta": {"cat": "viral", "sev": 8, "emoji": "🐭"},
+    "oropouche": {"cat": "vector-borne", "sev": 6, "emoji": "🦟"},
+    "crimean-congo": {"cat": "hemorrhagic", "sev": 9, "emoji": "🩸"},
+    "cchf": {"cat": "hemorrhagic", "sev": 9, "emoji": "🩸"},
+    "west nile": {"cat": "vector-borne", "sev": 5, "emoji": "🦟"},
+    "japanese encephalitis": {"cat": "vector-borne", "sev": 7, "emoji": "🦟"},
 }
 
 # ═══ Major international airport hubs by country ═══
@@ -279,13 +288,34 @@ def is_traveler_signal(text):
 
 def compute_confidence(signal):
     """Multi-factor confidence scoring."""
-    base = {"who": 0.95, "news": 0.70, "mastodon": 0.45, "reddit": 0.40}
+    base = {"who": 0.95, "paho": 0.85, "news": 0.70, "mastodon": 0.45, "reddit": 0.40}
     conf = base.get(signal.get("source", ""), 0.5)
     if signal.get("is_traveler"): conf += 0.1
     if signal.get("type") == "official_alert": conf += 0.1
     if "outbreak" in signal.get("summary", "").lower(): conf += 0.05
     if "death" in signal.get("summary", "").lower(): conf += 0.05
     return min(1.0, round(conf, 2))
+
+# Extract crude case/death counts from outbreak text.
+# Conservative: matches "N cases" / "N deaths" with optional qualifier;
+# rejects results > 10M to filter out years, population sizes, etc.
+_CASE_PAT = re.compile(r"\b([\d][\d,]{0,8})\s+(?:confirmed |suspected |new |reported |probable |additional )?cases?\b", re.IGNORECASE)
+_DEATH_PAT = re.compile(r"\b([\d][\d,]{0,8})\s+(?:confirmed |reported |new |additional )?deaths?\b", re.IGNORECASE)
+
+def extract_counts(text):
+    """Pull case/death counts from outbreak text. Returns {} if none found or implausible."""
+    out = {}
+    for key, pat in (("cases", _CASE_PAT), ("deaths", _DEATH_PAT)):
+        m = pat.search(text)
+        if not m:
+            continue
+        try:
+            n = int(m.group(1).replace(",", ""))
+        except ValueError:
+            continue
+        if 0 < n < 10_000_000:  # reject implausibly large matches
+            out[key] = n
+    return out
 
 # ═══ Search functions ═══
 
@@ -335,6 +365,26 @@ def fetch_who():
     except Exception as e:
         print(f"  [!] WHO error: {e}", file=sys.stderr)
         return []
+
+def fetch_paho(limit=40):
+    """PAHO (WHO Americas region) news RSS. Items are general PAHO news;
+    detect_diseases() filters to outbreak-relevant entries downstream."""
+    url = "https://www.paho.org/en/rss.xml"
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "geosentinel/2.0", "Accept": "application/rss+xml,application/xml"})
+        with urllib.request.urlopen(req, timeout=20) as r:
+            tree = ET.fromstring(r.read())
+    except Exception as e:
+        print(f"  [!] PAHO error: {e}", file=sys.stderr)
+        return []
+    out = []
+    for item in tree.findall(".//item")[:limit]:
+        title = (item.findtext("title") or "").strip()
+        desc = _HTML_TAG.sub(" ", (item.findtext("description") or "")).strip()
+        link = (item.findtext("link") or "").strip()
+        pub = (item.findtext("pubDate") or "").strip()
+        out.append({"title": title, "description": desc[:500], "url": link, "published": pub})
+    return out
 
 REDDIT_UA = "geosentinel/2.0 (+https://github.com/acuestamd/project-geosentinel)"
 
@@ -450,6 +500,7 @@ def process_who(items):
         if loc:
             d = diseases[0] if diseases else {"name":"unknown","cat":"unknown","sev":5,"emoji":"🦠"}
             sev = min(10, d["sev"] + (1 if "death" in text.lower() else 0))
+            counts = extract_counts(text)
             signals.append({
                 "id": make_id(title),
                 "source": "who",
@@ -465,6 +516,38 @@ def process_who(items):
                 "timestamp": item.get("PublicationDate", datetime.now(timezone.utc).isoformat()),
                 "published": item.get("PublicationDate", "")[:10],
                 "is_traveler": False,
+                "case_count": counts.get("cases"),
+                "death_count": counts.get("deaths"),
+            })
+    return signals
+
+def process_paho(items):
+    signals = []
+    for r in items:
+        text = (r.get("title", "") + " " + r.get("description", "")).strip()
+        loc = geocode(text)
+        diseases = detect_diseases(text)
+        if loc and diseases:
+            d = diseases[0]
+            sev = min(10, d["sev"] + (1 if "outbreak" in text.lower() else 0) + (1 if "death" in text.lower() else 0))
+            counts = extract_counts(text)
+            signals.append({
+                "id": make_id(text),
+                "source": "paho",
+                "type": "official_alert",
+                "disease": d["name"],
+                "category": d["cat"],
+                "emoji": d["emoji"],
+                "location": loc,
+                "severity": sev,
+                "confidence": 0.85,
+                "summary": text[:300],
+                "url": r.get("url", ""),
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "published": r.get("published", ""),
+                "is_traveler": False,
+                "case_count": counts.get("cases"),
+                "death_count": counts.get("deaths"),
             })
     return signals
 
@@ -478,6 +561,7 @@ def process_news(results, query=""):
             d = diseases[0]
             sev = min(10, d["sev"] + (1 if "outbreak" in text.lower() else 0) + (1 if "death" in text.lower() else 0))
             traveler = is_traveler_signal(text)
+            counts = extract_counts(text)
             signals.append({
                 "id": make_id(text),
                 "source": "news",
@@ -493,6 +577,8 @@ def process_news(results, query=""):
                 "timestamp": datetime.now(timezone.utc).isoformat(),
                 "published": r.get("published", ""),
                 "is_traveler": traveler,
+                "case_count": counts.get("cases"),
+                "death_count": counts.get("deaths"),
             })
     return signals
 
@@ -653,13 +739,20 @@ def run_scan():
 
     all_signals = []
 
-    # 1. WHO
-    print("\n📡 [1/4] WHO Disease Outbreak News...")
+    # 1. WHO Disease Outbreak News
+    print("\n📡 [1/5] WHO Disease Outbreak News...")
     who = fetch_who()
     print(f"   → {len(who)} items")
     all_signals.extend(process_who(who))
 
-    # 2. News (GDELT — keyless global news API; ~1 req per 8s for unauth)
+    # 2. PAHO (WHO regional office for the Americas)
+    print("\n🌎 [2/5] PAHO news (WHO Americas)...")
+    paho = fetch_paho()
+    paho_sigs = process_paho(paho)
+    print(f"   → {len(paho)} items, {len(paho_sigs)} disease-relevant signals")
+    all_signals.extend(paho_sigs)
+
+    # 3. News (GDELT — keyless global news API; ~1 req per 8s for unauth)
     news_queries = [
         '"dengue outbreak"',
         '"cholera outbreak"',
@@ -670,7 +763,7 @@ def run_scan():
         '"yellow fever" outbreak',
         '"measles outbreak"',
     ]
-    print(f"\n🔍 [2/4] News search ({len(news_queries)} queries via GDELT)...")
+    print(f"\n🔍 [3/5] News search ({len(news_queries)} queries via GDELT)...")
     for i, q in enumerate(news_queries):
         results = fetch_gdelt(q, max_records=25)
         sigs = process_news(results, q)
@@ -679,7 +772,7 @@ def run_scan():
         all_signals.extend(sigs)
         time.sleep(8.0)  # GDELT 429s aggressively under ~5s spacing
 
-    # 3. Reddit (OAuth app-only; skipped silently if creds missing)
+    # 4. Reddit (OAuth app-only; skipped silently if creds missing)
     reddit_token = get_reddit_token()
     if reddit_token:
         reddit_queries = [
@@ -690,7 +783,7 @@ def run_scan():
             "travel health warning outbreak",
             "sick after vacation tropical",
         ]
-        print(f"\n💬 [3/4] Reddit ({len(reddit_queries)} queries, OAuth)...")
+        print(f"\n💬 [4/5] Reddit ({len(reddit_queries)} queries, OAuth)...")
         for q in reddit_queries:
             results = fetch_reddit(q, reddit_token, limit=20)
             sigs = process_reddit(results)
@@ -699,15 +792,15 @@ def run_scan():
             all_signals.extend(sigs)
             time.sleep(1.0)  # OAuth quota is ~100 req/min, polite spacing
     else:
-        print("\n💬 [3/4] Reddit — skipped (no REDDIT_CLIENT_ID/SECRET set)")
+        print("\n💬 [4/5] Reddit — skipped (no REDDIT_CLIENT_ID/SECRET set)")
 
-    # 4. Mastodon (public hashtag timelines, no auth required)
+    # 5. Mastodon (public hashtag timelines, no auth required)
     mastodon_tags = [
         "dengue", "malaria", "cholera", "ebola", "mpox", "measles",
         "outbreak", "h5n1", "avianflu", "nipah", "marburg", "yellowfever",
         "publichealth", "travelhealth",
     ]
-    print(f"\n🐘 [4/4] Mastodon ({len(mastodon_tags)} hashtags)...")
+    print(f"\n🐘 [5/5] Mastodon ({len(mastodon_tags)} hashtags)...")
     for tag in mastodon_tags:
         statuses = fetch_mastodon(tag, limit=40)
         sigs = process_mastodon(statuses)

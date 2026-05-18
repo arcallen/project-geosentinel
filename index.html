@@ -45,6 +45,9 @@
   .tsep{width:1px;height:20px;background:var(--light-border);margin:0 6px}
   .ttoggle{font-size:.6rem;padding:4px 10px;border:1px solid var(--light-border);border-radius:16px;background:var(--white);color:var(--dim);cursor:pointer;font-family:inherit;font-weight:500}
   .ttoggle.on{border-color:var(--un-accent);color:var(--un-accent);background:var(--un-light)}
+  .searchbox{font-size:.65rem;padding:5px 10px;border:1px solid var(--light-border);border-radius:16px;background:var(--white);color:var(--text);font-family:inherit;width:200px;outline:none;transition:border-color .15s,width .15s}
+  .searchbox:focus{border-color:var(--un-blue);width:260px}
+  .searchbox::placeholder{color:var(--dim)}
 
   /* Main */
   .main{flex:1;display:flex;overflow:hidden;min-height:0}
@@ -91,10 +94,10 @@
   .sig-badges{margin-left:auto;display:flex;gap:3px}
   .badge{font-size:.42rem;padding:2px 6px;border-radius:10px;font-weight:600}
   .badge.who{color:var(--un-blue);background:var(--un-light)}
+  .badge.paho{color:#0c7c59;background:#e0f2eb}
   .badge.mastodon{color:#6364ff;background:#eaeaff}
   .badge.news{color:#7c3aed;background:#ede9fe}
   .badge.reddit{color:#ff4500;background:#fff0e6}
-  .badge.trends{color:var(--low);background:var(--low-bg)}
   .badge.traveler{color:#d81b60;background:#fce4ec}
   .badge.anomaly{color:var(--critical);background:var(--crit-bg);animation:pulse-anom 1.5s infinite}
   @keyframes pulse-anom{0%,100%{opacity:1}50%{opacity:.5}}
@@ -179,6 +182,7 @@
     <span class="tbar-label">Source</span>
     <button class="tbtn on" data-f="source" data-v="all">All</button>
     <button class="tbtn" data-f="source" data-v="who">🏥 WHO</button>
+    <button class="tbtn" data-f="source" data-v="paho">🌎 PAHO</button>
     <button class="tbtn" data-f="source" data-v="news">📰 News</button>
     <button class="tbtn" data-f="source" data-v="mastodon">🐘 Mastodon</button>
     <button class="tbtn" data-f="source" data-v="reddit">💬 Reddit</button>
@@ -197,6 +201,10 @@
     <button class="tbtn" data-f="time" data-v="7d">7 days</button>
     <button class="tbtn" data-f="time" data-v="24h">24h</button>
     <button class="tbtn" data-f="time" data-v="all">All time</button>
+  </div>
+  <div class="tsep"></div>
+  <div class="tbar-group">
+    <input type="text" id="searchBox" class="searchbox" placeholder="🔍 search disease, country, summary…" autocomplete="off">
   </div>
   <div class="tsep"></div>
   <div class="tbar-group">
@@ -236,11 +244,11 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 let D=null,activeTab='signals',markers=[],flightLines=[],showFlights=false,showTravelers=false;
-let filterSource='all',filterSev='all',filterTime='30d';
+let filterSource='all',filterSev='all',filterTime='30d',searchQuery='';
 
 const SEV={critical:'#d32f2f',high:'#e65100',moderate:'#f9a825',low:'#2e7d32'};
 const CAT_C={'vector-borne':'#e65100',waterborne:'#0288d1',respiratory:'#7c3aed',viral:'#d32f2f',hemorrhagic:'#b71c1c',bacterial:'#f9a825','vaccine-preventable':'#2e7d32',parasitic:'#ff6f00',unknown:'#90a4ae'};
-const SRC_I={who:'🏥',mastodon:'🐘',news:'📰',reddit:'💬'};
+const SRC_I={who:'🏥',paho:'🌎',mastodon:'🐘',news:'📰',reddit:'💬'};
 
 function sc(s){return s>=8?'c':s>=6?'h':s>=4?'m':'lo'}
 function sl(s){return s>=8?'critical':s>=6?'high':s>=4?'moderate':'low'}
@@ -306,6 +314,10 @@ function getFiltered(){
     if(filterTime!=='all'&&cut>0){
       const d=parseAge(s.published);
       if(d&&(now-d.getTime())>cut)return false;
+    }
+    if(searchQuery){
+      const hay=`${s.disease||''} ${s.location.country||''} ${s.location.name||''} ${s.summary||''}`.toLowerCase();
+      if(!hay.includes(searchQuery))return false;
     }
     return true;
   });
@@ -374,6 +386,19 @@ document.querySelectorAll('.tab').forEach(t=>{
   t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');activeTab=t.dataset.t;renderPanel()};
 });
 
+(function(){
+  const sb=document.getElementById('searchBox');
+  if(!sb)return;
+  let timer=null;
+  sb.addEventListener('input',e=>{
+    clearTimeout(timer);
+    timer=setTimeout(()=>{searchQuery=e.target.value.trim().toLowerCase();refresh();},120);
+  });
+  sb.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){sb.value='';searchQuery='';refresh();sb.blur();}
+  });
+})();
+
 function renderPanel(){if(activeTab==='signals')renderSignals();else if(activeTab==='stats')renderStats();else renderRegions()}
 
 function renderSignals(){
@@ -398,7 +423,7 @@ function renderSignals(){
         <div class="sig-sum">${esc(s.summary)}</div>
       </a>
       <div class="sig-loc" onclick="flyTo(${s.location.lat},${s.location.lng})">${esc(s.location.name)}, ${esc(s.location.country)}</div>
-      <div class="sig-meta"><span>🕐 ${s.published||'unknown'}</span><span>· 🎯 ${(s.confidence*100).toFixed(0)}%</span><span>· ${s.type.replace(/_/g,' ')}</span></div>
+      <div class="sig-meta"><span>🕐 ${s.published||'unknown'}</span><span>· 🎯 ${(s.confidence*100).toFixed(0)}%</span><span>· ${s.type.replace(/_/g,' ')}</span>${s.case_count?`<span>· 🩺 ${s.case_count.toLocaleString()} cases</span>`:''}${s.death_count?`<span>· 💀 ${s.death_count.toLocaleString()} deaths</span>`:''}</div>
     </div>`;
   }).join('');
 }
