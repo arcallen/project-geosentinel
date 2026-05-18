@@ -29,6 +29,7 @@ jobs:
 
       - name: Restore signal history cache
         uses: actions/cache/restore@v4
+        continue-on-error: true
         with:
           path: signal_history.json
           key: geosentinel-history-${{ github.run_id }}
@@ -41,8 +42,10 @@ jobs:
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
         run: python scanner_v2.py
 
+      # Cache hiccups should never fail the run — baselines just rebuild next scan.
       - name: Save signal history cache
         if: always()
+        continue-on-error: true
         uses: actions/cache/save@v4
         with:
           path: signal_history.json
