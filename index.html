@@ -182,7 +182,6 @@
     <button class="tbtn" data-f="source" data-v="news">📰 News</button>
     <button class="tbtn" data-f="source" data-v="mastodon">🐘 Mastodon</button>
     <button class="tbtn" data-f="source" data-v="reddit">💬 Reddit</button>
-    <button class="tbtn" data-f="source" data-v="trends">📈 Trends</button>
   </div>
   <div class="tsep"></div>
   <div class="tbar-group">
@@ -241,7 +240,7 @@ let filterSource='all',filterSev='all',filterTime='30d';
 
 const SEV={critical:'#d32f2f',high:'#e65100',moderate:'#f9a825',low:'#2e7d32'};
 const CAT_C={'vector-borne':'#e65100',waterborne:'#0288d1',respiratory:'#7c3aed',viral:'#d32f2f',hemorrhagic:'#b71c1c',bacterial:'#f9a825','vaccine-preventable':'#2e7d32',parasitic:'#ff6f00',unknown:'#90a4ae'};
-const SRC_I={who:'🏥',mastodon:'🐘',news:'📰',reddit:'💬',trends:'📈'};
+const SRC_I={who:'🏥',mastodon:'🐘',news:'📰',reddit:'💬'};
 
 function sc(s){return s>=8?'c':s>=6?'h':s>=4?'m':'lo'}
 function sl(s){return s>=8?'critical':s>=6?'high':s>=4?'moderate':'low'}

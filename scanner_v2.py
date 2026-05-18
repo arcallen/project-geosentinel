@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""GeoSentinel 2.0 Scanner v2 — Multi-source disease surveillance with anomaly detection.
-Sources: WHO, News (GDELT), Reddit (direct), Mastodon, Google Trends — all keyless
-Features: deduplication, traveler detection, anomaly scoring, city-level geocoding"""
+"""GeoSentinel 2.0 Scanner — Multi-source disease surveillance with anomaly detection.
+Sources: WHO, GDELT news, Mastodon hashtags, Reddit (OAuth app-only).
+Features: deduplication, traveler detection, anomaly scoring, city-level geocoding."""
 
+import base64
 import json
 import os
 import re
@@ -278,7 +279,7 @@ def is_traveler_signal(text):
 
 def compute_confidence(signal):
     """Multi-factor confidence scoring."""
-    base = {"who": 0.95, "news": 0.70, "mastodon": 0.45, "reddit": 0.40, "trends": 0.50}
+    base = {"who": 0.95, "news": 0.70, "mastodon": 0.45, "reddit": 0.40}
     conf = base.get(signal.get("source", ""), 0.5)
     if signal.get("is_traveler"): conf += 0.1
     if signal.get("type") == "official_alert": conf += 0.1
@@ -289,7 +290,7 @@ def compute_confidence(signal):
 # ═══ Search functions ═══
 
 def fetch_gdelt(query, max_records=25):
-    """Keyless global news via GDELT 2.0 doc API. Returns dicts compatible with process_news."""
+    """Keyless global news via GDELT 2.0 doc API."""
     params = urllib.parse.urlencode({
         "query": query,
         "mode": "ArtList",
@@ -313,9 +314,6 @@ def fetch_gdelt(query, max_records=25):
             published = ""
             if len(seen) >= 15:
                 published = f"{seen[0:4]}-{seen[4:6]}-{seen[6:8]}T{seen[9:11]}:{seen[11:13]}:{seen[13:15]}Z"
-            # GDELT's sourcecountry is the English country name — fold it into
-            # the searchable text so the geocoder catches it when the article
-            # title doesn't name a known city/country.
             country = a.get("sourcecountry", "")
             out.append({
                 "title": a.get("title", ""),
@@ -338,13 +336,41 @@ def fetch_who():
         print(f"  [!] WHO error: {e}", file=sys.stderr)
         return []
 
-REDDIT_UA = "geosentinel/2.0 (+https://github.com/acuestamd/geosentinel)"
+REDDIT_UA = "geosentinel/2.0 (+https://github.com/acuestamd/project-geosentinel)"
 
-def fetch_reddit_direct(query, limit=20):
-    """Hit Reddit's public JSON search API directly (no Brave dep)."""
+def get_reddit_token():
+    """Reddit application-only OAuth (client_credentials).
+    Requires REDDIT_CLIENT_ID + REDDIT_CLIENT_SECRET env vars. Returns None if either
+    is missing so the rest of the pipeline keeps running without Reddit."""
+    cid = os.environ.get("REDDIT_CLIENT_ID", "").strip()
+    secret = os.environ.get("REDDIT_CLIENT_SECRET", "").strip()
+    if not cid or not secret:
+        return None
+    auth = base64.b64encode(f"{cid}:{secret}".encode()).decode()
+    data = urllib.parse.urlencode({"grant_type": "client_credentials"}).encode()
+    req = urllib.request.Request(
+        "https://www.reddit.com/api/v1/access_token",
+        data=data,
+        headers={"Authorization": f"Basic {auth}", "User-Agent": REDDIT_UA},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return json.loads(r.read()).get("access_token")
+    except Exception as e:
+        print(f"  [!] Reddit auth error: {e}", file=sys.stderr)
+        return None
+
+def fetch_reddit(query, token, limit=20):
+    """Authenticated Reddit search via OAuth Bearer token."""
+    if not token:
+        return []
     params = urllib.parse.urlencode({"q": query, "limit": str(limit), "sort": "new", "t": "month"})
-    url = "https://www.reddit.com/search.json?" + params
-    req = urllib.request.Request(url, headers={"User-Agent": REDDIT_UA, "Accept": "application/json"})
+    url = "https://oauth.reddit.com/search?" + params
+    req = urllib.request.Request(url, headers={
+        "Authorization": f"Bearer {token}",
+        "User-Agent": REDDIT_UA,
+        "Accept": "application/json",
+    })
     try:
         with urllib.request.urlopen(req, timeout=15) as r:
             data = json.loads(r.read())
@@ -409,58 +435,6 @@ def process_mastodon(statuses):
                 "published": s.get("created_at", ""),
                 "is_traveler": traveler,
             })
-    return signals
-
-def fetch_google_trends():
-    """Get Google Trends data for disease + travel keywords."""
-    signals = []
-    try:
-        from pytrends.request import TrendReq
-        pytrends = TrendReq(hl='en-US', tz=480)
-        
-        keyword_sets = [
-            ["dengue travel", "malaria travel", "cholera travel"],
-            ["sick after travel", "travel illness", "travel outbreak"],
-        ]
-        
-        for keywords in keyword_sets:
-            try:
-                pytrends.build_payload(keywords, timeframe='now 7-d')
-                interest = pytrends.interest_by_region(resolution='COUNTRY')
-                
-                for kw in keywords:
-                    if kw not in interest.columns:
-                        continue
-                    top = interest[interest[kw] > 50].sort_values(kw, ascending=False).head(5)
-                    for country_name, row in top.iterrows():
-                        score = int(row[kw])
-                        loc = geocode(country_name)
-                        if loc:
-                            disease_match = detect_diseases(kw)
-                            signals.append({
-                                "id": make_id(kw + country_name),
-                                "source": "trends",
-                                "type": "search_spike",
-                                "disease": disease_match[0]["name"] if disease_match else kw.split()[0],
-                                "category": disease_match[0]["cat"] if disease_match else "unknown",
-                                "emoji": disease_match[0]["emoji"] if disease_match else "📈",
-                                "location": loc,
-                                "severity": min(10, 4 + score // 25),
-                                "confidence": 0.50,
-                                "summary": "Google Trends: '%s' search interest at %d/100 in %s" % (kw, score, country_name),
-                                "url": "https://trends.google.com/trends/explore?q=%s" % urllib.parse.quote(kw),
-                                "timestamp": datetime.now(timezone.utc).isoformat(),
-                                "published": "last 7 days",
-                                "is_traveler": "travel" in kw,
-                                "trend_score": score,
-                            })
-            except Exception as e:
-                print(f"  [!] Trends batch error: {e}", file=sys.stderr)
-                continue
-    except ImportError:
-        print("  [!] pytrends not installed", file=sys.stderr)
-    except Exception as e:
-        print(f"  [!] Trends error: {e}", file=sys.stderr)
     return signals
 
 # ═══ Processing ═══
@@ -585,7 +559,7 @@ def detect_anomalies(signals, history):
         key = s["location"]["iso"] + ":" + s["disease"]
         prev_count = baselines.get(key, {}).get("avg_weekly", 0)
         curr_count = sum(1 for x in signals if x["location"]["iso"] == s["location"]["iso"] and x["disease"] == s["disease"])
-        
+
         if prev_count > 0 and curr_count > prev_count * 2:
             s["anomaly"] = True
             s["anomaly_factor"] = round(curr_count / max(prev_count, 0.1), 1)
@@ -593,13 +567,12 @@ def detect_anomalies(signals, history):
         else:
             s["anomaly"] = curr_count > 0 and prev_count == 0
             s["anomaly_factor"] = None
-    
-    # Update baselines
+
     counts = defaultdict(int)
     for s in signals:
         key = s["location"]["iso"] + ":" + s["disease"]
         counts[key] += 1
-    
+
     for key, count in counts.items():
         if key not in baselines:
             baselines[key] = {"avg_weekly": count, "samples": 1}
@@ -607,7 +580,7 @@ def detect_anomalies(signals, history):
             n = baselines[key]["samples"]
             baselines[key]["avg_weekly"] = (baselines[key]["avg_weekly"] * n + count) / (n + 1)
             baselines[key]["samples"] = n + 1
-    
+
     history["baselines"] = baselines
     return signals
 
@@ -652,7 +625,7 @@ def compute_hotspots(signals):
         c["sources"].add(s["source"])
         if s.get("is_traveler"): c["has_traveler_signals"] = True
         if s.get("anomaly"): c["has_anomaly"] = True
-    
+
     hotspots = []
     for c in sorted(countries.values(), key=lambda x: -x["max_severity"]):
         threat = "CRITICAL" if c["max_severity"] >= 8 else "HIGH" if c["max_severity"] >= 6 else "MODERATE" if c["max_severity"] >= 4 else "LOW"
@@ -673,19 +646,19 @@ def compute_hotspots(signals):
 def run_scan():
     import time
     t0 = time.time()
-    
+
     print("=" * 60)
-    print("🛰️  GeoSentinel 2.0 Scanner v2 — Full Spectrum Scan")
+    print("🛰️  GeoSentinel 2.0 Scanner — Full Spectrum Scan")
     print("=" * 60)
-    
+
     all_signals = []
-    
+
     # 1. WHO
-    print("\n📡 [1/5] WHO Disease Outbreak News...")
+    print("\n📡 [1/4] WHO Disease Outbreak News...")
     who = fetch_who()
     print(f"   → {len(who)} items")
     all_signals.extend(process_who(who))
-    
+
     # 2. News (GDELT — keyless global news API; ~1 req per 8s for unauth)
     news_queries = [
         '"dengue outbreak"',
@@ -697,7 +670,7 @@ def run_scan():
         '"yellow fever" outbreak',
         '"measles outbreak"',
     ]
-    print(f"\n🔍 [2/5] News search ({len(news_queries)} queries via GDELT)...")
+    print(f"\n🔍 [2/4] News search ({len(news_queries)} queries via GDELT)...")
     for i, q in enumerate(news_queries):
         results = fetch_gdelt(q, max_records=25)
         sigs = process_news(results, q)
@@ -705,32 +678,36 @@ def run_scan():
             print(f"   [{i+1}/{len(news_queries)}] {q} → {len(sigs)} signals")
         all_signals.extend(sigs)
         time.sleep(8.0)  # GDELT 429s aggressively under ~5s spacing
-    
-    # 3. Reddit (direct JSON API — no Brave dependency)
-    reddit_queries = [
-        "travel sick illness trip",
-        "got dengue traveling",
-        "malaria travel experience",
-        "food poisoning travel country",
-        "travel health warning outbreak",
-        "sick after vacation tropical",
-    ]
-    print(f"\n💬 [3/5] Reddit ({len(reddit_queries)} queries)...")
-    for q in reddit_queries:
-        results = fetch_reddit_direct(q, limit=20)
-        sigs = process_reddit(results)
-        if sigs:
-            print(f"   '{q}' → {len(sigs)} signals")
-        all_signals.extend(sigs)
-        time.sleep(2.0)  # Reddit asks ~30 req/min max for unauth
 
-    # 4. Mastodon (replaces Twitter/X — public hashtag timeline, no auth)
+    # 3. Reddit (OAuth app-only; skipped silently if creds missing)
+    reddit_token = get_reddit_token()
+    if reddit_token:
+        reddit_queries = [
+            "travel sick illness trip",
+            "got dengue traveling",
+            "malaria travel experience",
+            "food poisoning travel country",
+            "travel health warning outbreak",
+            "sick after vacation tropical",
+        ]
+        print(f"\n💬 [3/4] Reddit ({len(reddit_queries)} queries, OAuth)...")
+        for q in reddit_queries:
+            results = fetch_reddit(q, reddit_token, limit=20)
+            sigs = process_reddit(results)
+            if sigs:
+                print(f"   '{q}' → {len(sigs)} signals")
+            all_signals.extend(sigs)
+            time.sleep(1.0)  # OAuth quota is ~100 req/min, polite spacing
+    else:
+        print("\n💬 [3/4] Reddit — skipped (no REDDIT_CLIENT_ID/SECRET set)")
+
+    # 4. Mastodon (public hashtag timelines, no auth required)
     mastodon_tags = [
         "dengue", "malaria", "cholera", "ebola", "mpox", "measles",
         "outbreak", "h5n1", "avianflu", "nipah", "marburg", "yellowfever",
         "publichealth", "travelhealth",
     ]
-    print(f"\n🐘 [4/5] Mastodon ({len(mastodon_tags)} hashtags)...")
+    print(f"\n🐘 [4/4] Mastodon ({len(mastodon_tags)} hashtags)...")
     for tag in mastodon_tags:
         statuses = fetch_mastodon(tag, limit=40)
         sigs = process_mastodon(statuses)
@@ -739,41 +716,27 @@ def run_scan():
         all_signals.extend(sigs)
         time.sleep(1.0)
 
-    # 5. Google Trends
-    print("\n📈 [5/5] Google Trends...")
-    trend_signals = fetch_google_trends()
-    print(f"   → {len(trend_signals)} signals")
-    all_signals.extend(trend_signals)
-    
     # Post-processing
     print("\n⚙️  Processing...")
-    
-    # Compute confidence
+
     for s in all_signals:
         s["confidence"] = compute_confidence(s)
-    
-    # Deduplicate
+
     before = len(all_signals)
     all_signals = deduplicate(all_signals)
     print(f"   Dedup: {before} → {len(all_signals)}")
-    
-    # Sort by severity × confidence
+
     all_signals.sort(key=lambda x: -(x["severity"] * x["confidence"]))
-    
-    # Anomaly detection
+
     history = load_history()
     all_signals = detect_anomalies(all_signals, history)
     anomalies = sum(1 for s in all_signals if s.get("anomaly"))
     print(f"   Anomalies: {anomalies}")
-    
-    # Hotspots
+
     hotspots = compute_hotspots(all_signals)
-    
-    # Flight risk routes
     flight_routes = compute_flight_risk(hotspots)
     print(f"   Flight risk routes: {len(flight_routes)}")
-    
-    # Stats
+
     traveler_count = sum(1 for s in all_signals if s.get("is_traveler"))
     stats = {
         "total_signals": len(all_signals),
@@ -797,8 +760,7 @@ def run_scan():
         elif s["severity"] >= 6: stats["by_severity"]["high"] += 1
         elif s["severity"] >= 4: stats["by_severity"]["moderate"] += 1
         else: stats["by_severity"]["low"] += 1
-    
-    # Save
+
     output = {
         "version": "2.0",
         "lastScan": datetime.now(timezone.utc).isoformat(),
@@ -808,16 +770,15 @@ def run_scan():
         "flightRoutes": flight_routes,
         "stats": stats,
     }
-    
+
     os.makedirs(os.path.dirname(SIGNALS_FILE), exist_ok=True)
     with open(SIGNALS_FILE, "w") as f:
         json.dump(output, f, indent=2)
-    
-    # Update history
+
     history["scans"].append({"time": output["lastScan"], "signals": len(all_signals), "hotspots": len(hotspots)})
-    history["scans"] = history["scans"][-30:]  # keep last 30
+    history["scans"] = history["scans"][-30:]
     save_history(history)
-    
+
     elapsed = round(time.time() - t0, 1)
     print(f"\n{'=' * 60}")
     print(f"✅ Scan complete in {elapsed}s")
